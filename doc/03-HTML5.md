@@ -57,6 +57,19 @@
 ```
 
 
+= Live Coding
+
+# Live Coding
+
+## Aufgabe
+
+- Stylesheet `./design/index.css` hinzufuegen
+- Print Stylesheet `./design/print.css` hinzufuegen
+- Beschreibung und Autor der Website hinzufuegen
+- Encoding auf `UTF-8` setzen
+- Optional: Setze korrektes `viewport` meta-Tag (Mobile-ready)
+
+
 = Inhalte
 
 # Inhalte
@@ -127,9 +140,22 @@
 ```
 
 
+= Live Coding (Aufgabe)
+
+# Live Coding
+
+## Aufgabe
+
+- Ein `menu`, `header`, `main` und zwei `section`
+- Eine `section` mit id `status`
+- Eine `section` mit id `tasks`
+- Eine `table` mit id `status-overview`
+- Verlinke das Menu mit den IDs der Sektionen
+
+
 = Display Model
 
-# Display Model
+# DOM
 
 ## DOM
 
@@ -229,4 +255,108 @@ h1 {
 ```
 
 
+= Positionierung
+
+# Box Model
+
+## width, height und z-index
+
+- **Alle** Elemente haben `width` und `height`
+- Default-Wert ist `inherit` bzw. `auto`
+- Einheiten fuer Dimensionen sind `em`, `px`, `pt`
+
+## Position
+
+- **Alle** Elemente sind statisch by default
+- Absolute Inhalte mit `position: absolute`
+- Fixierte Inhalte mit `position: fixed`
+- Statische Inhalte mit `position: static`
+- Relative Inhalte mit `position: relative`
+
+## Absolute Position
+
+Wenn position `absolute or fixed` dann haben
+Elemente eine Position absolut zur linken oberen
+Ecke des Bildschirms und eine absolute Breite und
+Hoehe.
+
+## Relative Position
+
+Wenn position `static or relative` dann haben
+Elemente eine Position `relativ` zu ihrem
+umgebenden Element. Der Uebergang von `static`
+zu `absolute or fixed` ist **NUR** mit `relative`
+moeglich.
+
+## Beispiel: Static und Relative
+
+```html
+<div>
+  Woop woop (I'm static by default)
+  <div style="position:relative">
+    I'm still containing
+    <p style="position:absolute">
+      I'm absolute
+    </p>
+  </div>
+</div>
+```
+
+## Box Model: Absolute und Fixed
+
+- Angabe `width` und `height` mit `px`, `%` moeglich
+- Absolut zur linken oberen Ecke des Bildschirms
+- Absolut zum eigenen Element ohne Vererbung
+- Position  **NUR** noch mit `top` , `right` , `bottom` , `left`
+- `z-index` zum Einfluss der Zeichenreihenfolge moeglich
+
+
+## Beispiel: Absolute und Fixed
+
+```html
+<style>
+  div {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+  }
+</style>
+
+<div style="background:#ff0000;top:20px;left:20px;z-index:1"></div>
+<div style="background:#ffff00;top:50px;left:50px;z-index:10"></div>
+<div style="background:#0000ff;top:80px;left:80px;z-index:1"></div>
+```
+
+## Box Model: Static und Relative
+
+- Angabe `width` und `height` mit `px`, `%` moeglich
+- Relativ zum umgebenden Element
+- `z-index` hat keine Wirkung bei `static`
+- `z-index` hat Einfluss bei `relative`
+
+
+## Box Model: Margin und Padding
+
+- **Alle** Elemente haben `margin` und `padding`
+- **Alle** Elemente koennen eine `border` haben
+- `margin` wirkt nur auf Position **RELATIV** zum umgebenden Element
+- `margin` wirkt nicht bei `absolute` oder `fixed` Positionierung
+
+
+## Demo: Margin und Padding
+
+Live-Demo mit Inspect Element.
+Aufzeigen von Static, Relative, Absolute, Fixed.
+
+
+= Live Coding
+
+# Live Coding
+
+## Aufgabe
+
+- Baue das `menu` mit `position:fixed` linksbuendig
+- Baue die `main` (Inhalt) mit `position:absolute` rechtsbuendig
+- Setze `overflow:auto` auf die `main` und erklaere den Unterschied
+- Optional: Passe die Farben im Menu an ( auch fuer `a:hover` )
 
