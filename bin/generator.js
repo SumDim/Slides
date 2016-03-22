@@ -1,5 +1,17 @@
 #!/usr/bin/env node
 
+var _encode_entities = function(value) {
+
+	var text = value;
+
+	text = text.split('"').join('&quot;');
+	text = text.split('<').join('&lt;');
+	text = text.split('>').join('&gt;');
+
+	return text;
+
+};
+
 var _encode_inline = function(entities) {
 
 	var text = '';
@@ -9,7 +21,7 @@ var _encode_inline = function(entities) {
 
 		if (entity.token === 'Code') {
 
-			text += ' <code>' + entity.value + '</code> ';
+			text += ' <code>' + _encode_entities(entity.value) + '</code> ';
 
 		} else if (entity.token === 'Text') {
 
@@ -116,7 +128,7 @@ var _encode = function(data) {
 
 			code += '<pre class="' + entry.type + '">';
 			code += '<code>';
-			code += entry.value;
+			code += _encode_entities(entry.value);
 			code += '</code>';
 			code += '</pre>\n';
 
