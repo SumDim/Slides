@@ -245,6 +245,9 @@
 	</section>
 	<section>
 		<section>
+			<h1>CSS</h1>
+		</section>
+		<section>
 			<h2>CSS</h2>
 			<ul>
 				<li>Cascading Style Sheet</li>
@@ -261,9 +264,148 @@
 			<ul>
 				<li>Optische Gestaltung im Browser</li>
 				<li>Statisches Design und Animiertes Design</li>
+				<li>Textuelle Inhalte (Schriftart, -groesse, -stil)</li>
+				<li>Zeichenabstand Zeilenabstand und Einrueckung</li>
+				<li>Textfarbe Hintergrundfarbe, Rahmen</li>
+				<li>Transforms (Positionierung in 2D und 3D Raum)</li>
 				<li>Transitions (Uebergaenge von - bis)</li>
 				<li>Animationen (wiederholte Uebergaenge von - bis)</li>
 			</ul>
+		</section>
+		<section>
+			<h2>CSS3</h2>
+			<ul>
+				<li>CSS enthaelt CSS Regeln (Rules)</li>
+				<li>Eine Regel enthaelt mehrere Statements</li>
+				<li>CSS 2.1+ Lexer mergen nach gleichwertigen Selektoren</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Aufbau CSS Regel</h2>
+			<ul>
+				<li>Selektor legt Geltungsbereich fest</li>
+				<li>Deklarationsblock bestimmt Darstellung des Geltungsbereichs</li>
+				<li>Deklarationsblock besteht aus (n) Eigenschaft <code>:</code>  Wert</li>
+				<li>Statements werden durch Semikolon ( <code>;</code>  ) getrennt</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Aufbau CSS Regel</h2>
+<pre class="css"><code>Selektor {
+    Eigenschaft: Wert;
+    Eigenschaft: Wert;
+}</code></pre>
+		</section>
+		<section>
+			<h2>Beispiel: CSS Regel</h2>
+<pre class="css"><code>h1 { font-size: 12px; }
+h1 { background: red; }</code></pre>
+<pre class="css"><code>h1 {
+    font-size: 12px;
+    background: red;
+}</code></pre>
+		</section>
+		<section>
+			<h2>Selektoren</h2>
+			<ul>
+				<li>Unterschiedliche Selektorarten</li>
+				<li>Unterschiedliche Wertigkeit</li>
+				<li>Vererbung der Wertigkeit in Hierarchie</li>
+			</ul>
+<pre class="css"><code>#foo .bar &gt; div { color: red;  }
+#foo .bar div {   color: blue; }</code></pre>
+		</section>
+		<section>
+			<h2>Selektoren</h2>
+			<ul>
+				<li>Inline-Styles ( <code>style=&quot;color:red&quot;</code>  )</li>
+				<li>Wertigkeit <code>1000</code></li>
+			</ul>
+<pre class="html"><code>&lt;div style=&quot;color:red&quot;&gt;Red Text&lt;/div&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Selektoren</h2>
+			<ul>
+				<li>Identifier ( <code>id=&quot;foo&quot;</code>  )</li>
+				<li>Wertigkeit <code>100</code></li>
+			</ul>
+<pre class="html"><code>&lt;style&gt;
+#foo { color: red; }
+&lt;/style&gt;
+
+&lt;div id=&quot;foo&quot;&gt;Red Text&lt;/div&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Selektoren</h2>
+			<ul>
+				<li>Klassen und Pseudo-Klassen</li>
+				<li>Klassen sind (n) Arten der Elemente</li>
+				<li>Pseudo-Klassen sind Zustaende der Elemente</li>
+				<li>Wertigkeit <code>10</code></li>
+			</ul>
+<pre class="html"><code>&lt;style&gt;
+.foo    { color: red; }
+a:hover { color: purple; }
+&lt;/style&gt;
+
+&lt;div class=&quot;foo&quot;&gt;Red Text&lt;/div&gt;
+&lt;a href=&quot;#&quot;&gt;Blue Text on Mouse Hover&lt;/a&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Selektoren</h2>
+			<ul>
+				<li>Attribute</li>
+				<li>Wertigkeit <code>10</code></li>
+			</ul>
+<pre class="html"><code>&lt;style&gt;
+div     { color: blue; }
+div[id] { color: red;  }
+&lt;/style&gt;
+
+&lt;div&gt;Blue Text&lt;/div&gt;
+&lt;div id=&quot;foo&quot;&gt;Red Text&lt;/div&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Selektoren</h2>
+			<ul>
+				<li>Elemente und Pseudo-Elemente</li>
+				<li>Pseudo-Elemente sind innerhalb der Elemente</li>
+				<li>Wertigkeit <code>1</code></li>
+			</ul>
+<pre class="html"><code>&lt;style&gt;
+div { color: red; }
+div:before, div:after {
+    display: inline-block;
+    content: &quot;woop&quot;;
+    color: blue;
+}
+&lt;/style&gt;
+
+&lt;div&gt;Text&lt;/div&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Selektoren</h2>
+			<ul>
+				<li>Universalselektor</li>
+				<li>Wertigkeit <code>1</code></li>
+			</ul>
+<pre class="html"><code>&lt;style&gt;
+* { background: red; }
+&lt;/style&gt;
+
+&lt;div&gt;Foo&lt;/div&gt;
+&lt;p&gt;Bar&lt;/p&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Selektoren</h2>
+			<ul>
+				<li><code>a</code>  ~ <code>b</code> Jedes b, was ein vorhergehendes a hat</li>
+				<li><code>a</code>  + <code>b</code> Jedes b, was direkt nach einem a folgt</li>
+				<li><code>a</code>  > <code>b</code> Jedes b, was ein direktes Kindelement von a ist</li>
+			</ul>
+			<p>
+				Weitere Selektoren auf <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">CSS/Reference</a> im MDN.
+			</p>
 		</section>
 		<section>
 			<h2>Beispiel: Selektoren</h2>
@@ -299,6 +441,18 @@ h1 {
 			</ul>
 		</section>
 		<section>
+			<h2>Beispiel: width, height</h2>
+<pre class="html"><code>&lt;style&gt;
+div {
+    width: 30%;
+    height: 200px;
+    background: red;
+}
+&lt;/style&gt;
+
+&lt;div&gt;Foo&lt;/div&gt;</code></pre>
+		</section>
+		<section>
 			<h2>Position</h2>
 			<ul>
 				<li><b>Alle</b>  Elemente sind statisch by default</li>
@@ -315,6 +469,22 @@ h1 {
 			</p>
 		</section>
 		<section>
+			<h2>Beispiel: Absolute Position</h2>
+<pre class="html"><code>&lt;style&gt;
+div {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 100px;
+    left: 100px;
+    right: auto;
+    bottom: auto;
+    background: red;
+}
+&lt;/style&gt;
+&lt;div&gt;Example&lt;/div&gt;</code></pre>
+		</section>
+		<section>
 			<h2>Relative Position</h2>
 			<p>
 				Wenn position <code>static</code>  or <code>relative</code>  dann haben Elemente eine Position <code>relativ</code> zu ihrem umgebenden Element. Der Uebergang von <code>static</code>  zu <code>absolute</code>  or <code>fixed</code>  ist <b>NUR</b>  mit <code>relative</code> moeglich.
@@ -322,13 +492,28 @@ h1 {
 		</section>
 		<section>
 			<h2>Beispiel: Static und Relative</h2>
-<pre class="html"><code>&lt;div&gt;
-  Woop woop (I'm static by default)
-  &lt;div style=&quot;position:relative&quot;&gt;
-    I'm still containing
-    &lt;p style=&quot;position:absolute&quot;&gt;
-      I'm absolute
-    &lt;/p&gt;
+<pre class="html"><code>&lt;style&gt;
+div {
+    margin: 50px;
+    padding: 50px;
+    border: 1px solid black;
+}
+div &gt; div {
+    position: relative;
+    background: rgba(255,0,0,0.5);
+}
+div &gt; div &gt; p {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: red;
+}
+&lt;/style&gt;
+&lt;div&gt;
+  I'm static
+  &lt;div&gt;
+    I'm relative
+    &lt;p&gt;I'm absolute&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 		</section>
@@ -364,6 +549,20 @@ h1 {
 				<li><code>z-index</code>  hat keine Wirkung bei <code>static</code></li>
 				<li><code>z-index</code>  hat Einfluss bei <code>relative</code></li>
 			</ul>
+		</section>
+		<section>
+			<h2>Beispiel: Absolute und Fixed</h2>
+<pre class="html"><code>&lt;style&gt;
+  div {
+    position: static;
+    width: 100px;
+    height: 100px;
+  }
+&lt;/style&gt;
+
+&lt;div style=&quot;background:#ff0000;margin-top:20px;margin-left:20px;z-index:1&quot;&gt;&lt;/div&gt;
+&lt;div style=&quot;background:#ffff00;margin-top:-50px;margin-left:50px;z-index:10&quot;&gt;&lt;/div&gt;
+&lt;div style=&quot;background:#0000ff;margin-top:-30px;margin-left:80px;z-index:1&quot;&gt;&lt;/div&gt;</code></pre>
 		</section>
 		<section>
 			<h2>Box Model: Margin und Padding</h2>
@@ -402,6 +601,7 @@ h1 {
 
 <script src="/source/head.min.js"></script>
 <script src="/source/reveal.js"></script>
+<script src="/source/preview.js"></script>
 
 </body>
 </html>

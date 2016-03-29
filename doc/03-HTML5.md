@@ -215,6 +215,8 @@
 
 = CSS
 
+# CSS
+
 ## CSS
 
 - Cascading Style Sheet
@@ -229,8 +231,156 @@
 
 - Optische Gestaltung im Browser
 - Statisches Design und Animiertes Design
+- Textuelle Inhalte (Schriftart, -groesse, -stil)
+- Zeichenabstand, Zeilenabstand und Einrueckung
+- Textfarbe, Hintergrundfarbe, Rahmen
+- Transforms (Positionierung in 2D und 3D Raum)
 - Transitions (Uebergaenge von - bis)
 - Animationen (wiederholte Uebergaenge von - bis)
+
+## CSS3
+
+- CSS enthaelt CSS Regeln (Rules)
+- Eine Regel enthaelt mehrere Statements
+- CSS 2.1+ Lexer mergen nach gleichwertigen Selektoren
+
+## Aufbau CSS Regel
+
+- Selektor legt Geltungsbereich fest
+- Deklarationsblock bestimmt Darstellung des Geltungsbereichs
+- Deklarationsblock besteht aus (n) Eigenschaft `:` Wert
+- Statements werden durch Semikolon ( `;` ) getrennt
+
+## Aufbau CSS Regel
+
+```css
+Selektor {
+    Eigenschaft: Wert;
+    Eigenschaft: Wert;
+}
+```
+
+## Beispiel: CSS Regel
+
+```css
+h1 { font-size: 12px; }
+h1 { background: red; }
+```
+
+```css
+h1 {
+    font-size: 12px;
+    background: red;
+}
+```
+
+## Selektoren
+
+- Unterschiedliche Selektorarten
+- Unterschiedliche Wertigkeit
+- Vererbung der Wertigkeit in Hierarchie
+
+```css
+#foo .bar > div { color: red;  }
+#foo .bar div {   color: blue; }
+```
+
+## Selektoren
+
+- Inline-Styles ( `style="color:red"` )
+- Wertigkeit `1000`
+
+```html
+<div style="color:red">Red Text</div>
+```
+
+## Selektoren
+
+- Identifier ( `id="foo"` )
+- Wertigkeit `100`
+
+```html
+<style>
+#foo { color: red; }
+</style>
+
+<div id="foo">Red Text</div>
+```
+
+## Selektoren
+
+- Klassen und Pseudo-Klassen
+- Klassen sind (n) Arten der Elemente
+- Pseudo-Klassen sind Zustaende der Elemente
+- Wertigkeit `10`
+
+```html
+<style>
+.foo    { color: red; }
+a:hover { color: purple; }
+</style>
+
+<div class="foo">Red Text</div>
+<a href="#">Blue Text on Mouse Hover</a>
+```
+
+## Selektoren
+
+- Attribute
+- Wertigkeit `10`
+
+```html
+<style>
+div     { color: blue; }
+div[id] { color: red;  }
+</style>
+
+<div>Blue Text</div>
+<div id="foo">Red Text</div>
+```
+
+
+## Selektoren
+
+- Elemente und Pseudo-Elemente
+- Pseudo-Elemente sind innerhalb der Elemente
+- Wertigkeit `1`
+
+```html
+<style>
+div { color: red; }
+div:before, div:after {
+    display: inline-block;
+    content: "woop";
+    color: blue;
+}
+</style>
+
+<div>Text</div>
+```
+
+## Selektoren
+
+- Universalselektor
+- Wertigkeit `1`
+
+```html
+<style>
+* { background: red; }
+</style>
+
+<div>Foo</div>
+<p>Bar</p>
+```
+
+## Selektoren
+
+- `a ~ b` Jedes b, was ein vorhergehendes a hat
+- `a + b` Jedes b, was direkt nach einem a folgt
+- `a > b` Jedes b, was ein direktes Kindelement von a ist
+
+Weitere Selektoren auf [CSS/Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference) im MDN.
+
 
 ## Beispiel: Selektoren
 
@@ -265,6 +415,21 @@ h1 {
 - Default-Wert ist `inherit` bzw. `auto`
 - Einheiten fuer Dimensionen sind `em`, `px`, `pt`
 
+## Beispiel: width, height
+
+```html
+<style>
+div {
+    width: 30%;
+    height: 200px;
+    background: red;
+}
+</style>
+
+<div>Foo</div>
+```
+
+
 ## Position
 
 - **Alle** Elemente sind statisch by default
@@ -280,6 +445,24 @@ Elemente eine Position absolut zur linken oberen
 Ecke des Bildschirms und eine absolute Breite und
 Hoehe.
 
+## Beispiel: Absolute Position
+
+```html
+<style>
+div {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 100px;
+    left: 100px;
+    right: auto;
+    bottom: auto;
+    background: red;
+}
+</style>
+<div>Example</div>
+```
+
 ## Relative Position
 
 Wenn position `static or relative` dann haben
@@ -291,13 +474,28 @@ moeglich.
 ## Beispiel: Static und Relative
 
 ```html
+<style>
+div {
+    margin: 50px;
+    padding: 50px;
+    border: 1px solid black;
+}
+div > div {
+    position: relative;
+    background: rgba(255,0,0,0.5);
+}
+div > div > p {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: red;
+}
+</style>
 <div>
-  Woop woop (I'm static by default)
-  <div style="position:relative">
-    I'm still containing
-    <p style="position:absolute">
-      I'm absolute
-    </p>
+  I'm static
+  <div>
+    I'm relative
+    <p>I'm absolute</p>
   </div>
 </div>
 ```
@@ -334,6 +532,21 @@ moeglich.
 - `z-index` hat keine Wirkung bei `static`
 - `z-index` hat Einfluss bei `relative`
 
+## Beispiel: Absolute und Fixed
+
+```html
+<style>
+  div {
+    position: static;
+    width: 100px;
+    height: 100px;
+  }
+</style>
+
+<div style="background:#ff0000;margin-top:20px;margin-left:20px;z-index:1"></div>
+<div style="background:#ffff00;margin-top:-50px;margin-left:50px;z-index:10"></div>
+<div style="background:#0000ff;margin-top:-30px;margin-left:80px;z-index:1"></div>
+```
 
 ## Box Model: Margin und Padding
 

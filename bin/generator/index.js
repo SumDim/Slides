@@ -153,11 +153,11 @@ var _encode = function(data) {
 
 
 var fs       = require('fs');
-var parser   = require('./generator/markdown.js');
+var parser   = require('./markdown.js');
 var path     = require('path');
-var tpl      = fs.readFileSync(__dirname + '/generator/template.html').toString('utf8');
-var in_path  = path.resolve(__dirname + '/../', process.argv[2]);
-var out_path = path.resolve(__dirname + '/../', process.argv[2].split('/').pop().replace('.md', '.html'));
+var tpl      = fs.readFileSync(__dirname + '/template.html').toString('utf8');
+var in_path  = path.resolve(__dirname + '/../../', process.argv[2]);
+var out_path = path.resolve(__dirname + '/../../', process.argv[2].split('/').pop().replace('.md', '.html'));
 
 
 var data = parser.decode(fs.readFileSync(in_path, 'utf8').toString('utf8'));

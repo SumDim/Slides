@@ -8,16 +8,7 @@
 
 		for (var e = 0, el = elements.length; e < el; e++) {
 
-			var element = elements[e];
-			var parent  = elements[e].parentNode.parentNode;
-			var code    = elements[e].innerText;
-			var button  = document.createElement('button');
-
-			button.innerHTML = 'Code Preview';
-			parent.insertBefore(button, element.parentNode.nextSibling);
-
-
-			(function(button, code) {
+			(function(element, code) {
 
 				code = code.split('\n').filter(function(line) {
 
@@ -31,7 +22,7 @@
 				}).join('\n');
 
 
-				button.onclick = function() {
+				element.onclick = function() {
 
 					if (_PREVIEW === null) {
 						_PREVIEW = window.open('/source/preview.html', 'Code Preview', '');
@@ -46,7 +37,7 @@
 
 				};
 
-			})(button, code);
+			})(elements[e], elements[e].innerText);
 
 		}
 
