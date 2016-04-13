@@ -1,0 +1,83 @@
+<script>
+
+var fun_x = function() {
+	return 3 * 3;
+};
+
+var fun_y = new Function('return 3 * 3');
+
+
+console.log(fun_x() === fun_y());
+
+
+var foo_x = function(a, b) {
+
+	console.log(typeof a, typeof b);
+
+	return a * b;
+};
+
+var foo_y = function(a, b, c) {
+
+	var result = a * b;
+
+	if (typeof c === 'number') {
+		result = result * c;
+	} else {
+		console.error('WOOP WOOP false data type', typeof c, c);
+	}
+
+
+	return result;
+
+};
+
+console.log(foo_x(1, 3));
+console.log(foo_y(1, 3, 7));
+console.log(foo_y(1, 3, 'blub'));
+
+
+var result_x = 1;
+var scope_x = function() {
+	return (result_x *= 3);
+};
+
+console.log(scope_x(), result_x);
+console.log(scope_x(), result_x);
+console.log(scope_x(), result_x);
+
+
+console.group('closure fuer result_x');
+
+(function(result_x, other) {
+	
+	result_x = 500;
+
+	console.log(result_x, other);
+
+})(result_x, 123);
+
+console.log(result_x);
+
+console.groupEnd();
+
+
+var result_y = { foo: 1 };
+
+console.group('closure fuer result_y');
+
+(function(result_y) {
+	
+	result_y.foo *= 3;
+	result_y.foo *= 3;
+	result_y.foo *= 3;
+
+	console.log(result_y);
+
+})(result_y);
+
+console.log(result_y);
+
+console.groupEnd();
+
+</script>

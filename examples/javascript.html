@@ -1,0 +1,42 @@
+<!DOCTYPE html?>
+<script>
+
+var arr_1 = new Array(13);
+var arr_2 = [];
+
+console.log(arr_1);
+console.log(arr_2);
+
+
+var bool_x = true;
+var bool_y = new Boolean(true);
+
+console.log(bool_x === true); // true,  because bool_x is a Primitive
+console.log(bool_y === true); // false, because bool_y is an Object
+
+console.log(bool_x == true); // true
+console.log(bool_y == true); // true
+
+
+var obj_x = { foo: 'bar' };
+var obj_y = { foo: 'bar' };
+
+console.log(obj_x === obj_y);
+console.log(obj_x == obj_y);
+
+
+var str_x = 'foo';
+var str_y = new String('foo');
+
+console.log(str_x === str_y);
+console.log(str_x == str_y);
+
+
+var num_x = 123;
+var num_y = new Number(123);
+
+console.log(num_x === num_y);
+console.log(num_x == num_y);
+
+
+</script>
