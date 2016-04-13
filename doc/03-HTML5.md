@@ -573,3 +573,124 @@ Aufzeigen von Static, Relative, Absolute, Fixed.
 - Setze `overflow:auto` auf die `main` und erklaere den Unterschied
 - Optional: Passe die Farben im Menu an ( auch fuer `a:hover` )
 
+
+= Transitions
+
+# Transitions
+
+## Transitions
+
+- Keyframe Interpolation
+- Uebergang (Transition) zwischen zwei Zustaenden
+
+## Transition Properties
+
+- `transition` ist Shorthand Notation fuer:
+- `transition-delay` in `ms` oder `s`
+- `transition-duration` in `ms` oder `s`
+- `transition-property` mit `all` oder einzelne Properties
+- `transition-timing-function` fuer eigene Interpolation
+
+## Beispiel: Transition
+
+```html
+<style>
+div {
+	width: 50px;
+	height: 50px;
+	background: red;
+	margin-left: 0px;
+	transition: 1000ms margin ease-out;
+}
+div.active {
+	margin-left: 200px;
+	transition: 2000ms margin ease-out;
+	background: blue;
+}
+</style>
+<div onclick="this.className = this.className === 'active' ? '' : 'active';">Foo</div>
+```
+
+
+= Vendor Prefixes
+
+# Vendor Prefixes
+
+## Vendor Prefixes
+
+- Nicht-Standardisiert (in Entwicklung)
+- Prototypischer CSS Support
+- Alter Browser ist scheisse und alt
+- Alter Browser braucht Vendor Prefixes
+
+## Beispiel: Vendor Prefixes
+
+- `-moz-transform` wird zu `transform`
+- `-ms-transform` wird zu `transform`
+- `-o-transform` wird zu `transform`
+- `-webkit-transform` wird zu `transform`
+
+
+= Animations
+
+# Animations
+
+## Animations
+
+- Wiederholungen von Transitions
+- Keyframe Interpolation
+- Angabe wie Transitions
+- Keyframes mit Vendor Prefix
+
+## Beispiel: Animations
+
+```html
+<style>
+@-webkit-keyframes move {
+	from { background:red;  margin-left: 0px;   }
+	to   { background:blue; margin-left: 200px; }
+}
+
+@keyframes move {
+	from { background:red;  margin-left: 0px;   }
+	to   { background:blue; margin-left: 200px; }
+}
+
+div {
+	width: 50px;
+	height: 50px;
+	background: red;
+	margin-left: 0px;
+	animation: move 1000ms ease-out 0s infinite;
+}
+</style>
+<div>Foo</div>
+```
+
+## Beispiel: Animations
+
+```html
+<style>
+@-webkit-keyframes move {
+	0%   { background:red;  margin-left: 0px;   }
+	50%  { background:blue; margin-left: 200px; }
+	100% { background:red;  margin-left: 0px;   }
+}
+
+@keyframes move {
+	0%   { background:red;  margin-left: 0px;   }
+	50%  { background:blue; margin-left: 200px; }
+	100% { background:red;  margin-left: 0px;   }
+}
+
+div {
+	width: 50px;
+	height: 50px;
+	background: red;
+	margin-left: 0px;
+	animation: move 1000ms ease-out 0s infinite;
+}
+</style>
+<div>Foo</div>
+```
+

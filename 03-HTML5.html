@@ -594,6 +594,131 @@ div &gt; div &gt; p {
 			</ul>
 		</section>
 	</section>
+	<section>
+		<section>
+			<h1>Transitions</h1>
+		</section>
+		<section>
+			<h2>Transitions</h2>
+			<ul>
+				<li>Keyframe Interpolation</li>
+				<li>Uebergang (Transition) zwischen zwei Zustaenden</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Transition Properties</h2>
+			<ul>
+				<li><code>transition</code>  ist Shorthand Notation fuer:</li>
+				<li><code>transition-delay</code>  in <code>ms</code>  oder <code>s</code></li>
+				<li><code>transition-duration</code>  in <code>ms</code>  oder <code>s</code></li>
+				<li><code>transition-property</code>  mit <code>all</code>  oder einzelne Properties</li>
+				<li><code>transition-timing-function</code>  fuer eigene Interpolation</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel: Transition</h2>
+<pre class="html"><code>&lt;style&gt;
+div {
+	width: 50px;
+	height: 50px;
+	background: red;
+	margin-left: 0px;
+	transition: 1000ms margin ease-out;
+}
+div.active {
+	margin-left: 200px;
+	transition: 2000ms margin ease-out;
+	background: blue;
+}
+&lt;/style&gt;
+&lt;div onclick=&quot;this.className = this.className === 'active' ? '' : 'active';&quot;&gt;Foo&lt;/div&gt;</code></pre>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Vendor Prefixes</h1>
+		</section>
+		<section>
+			<h2>Vendor Prefixes</h2>
+			<ul>
+				<li>Nicht-Standardisiert (in Entwicklung)</li>
+				<li>Prototypischer CSS Support</li>
+				<li>Alter Browser ist scheisse und alt</li>
+				<li>Alter Browser braucht Vendor Prefixes</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel: Vendor Prefixes</h2>
+			<ul>
+				<li><code>-moz-transform</code>  wird zu <code>transform</code></li>
+				<li><code>-ms-transform</code>  wird zu <code>transform</code></li>
+				<li><code>-o-transform</code>  wird zu <code>transform</code></li>
+				<li><code>-webkit-transform</code>  wird zu <code>transform</code></li>
+			</ul>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Animations</h1>
+		</section>
+		<section>
+			<h2>Animations</h2>
+			<ul>
+				<li>Wiederholungen von Transitions</li>
+				<li>Keyframe Interpolation</li>
+				<li>Angabe wie Transitions</li>
+				<li>Keyframes mit Vendor Prefix</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel: Animations</h2>
+<pre class="html"><code>&lt;style&gt;
+@-webkit-keyframes move {
+	from { background:red;  margin-left: 0px;   }
+	to   { background:blue; margin-left: 200px; }
+}
+
+@keyframes move {
+	from { background:red;  margin-left: 0px;   }
+	to   { background:blue; margin-left: 200px; }
+}
+
+div {
+	width: 50px;
+	height: 50px;
+	background: red;
+	margin-left: 0px;
+	animation: move 1000ms ease-out 0s infinite;
+}
+&lt;/style&gt;
+&lt;div&gt;Foo&lt;/div&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Beispiel: Animations</h2>
+<pre class="html"><code>&lt;style&gt;
+@-webkit-keyframes move {
+	0%   { background:red;  margin-left: 0px;   }
+	50%  { background:blue; margin-left: 200px; }
+	100% { background:red;  margin-left: 0px;   }
+}
+
+@keyframes move {
+	0%   { background:red;  margin-left: 0px;   }
+	50%  { background:blue; margin-left: 200px; }
+	100% { background:red;  margin-left: 0px;   }
+}
+
+div {
+	width: 50px;
+	height: 50px;
+	background: red;
+	margin-left: 0px;
+	animation: move 1000ms ease-out 0s infinite;
+}
+&lt;/style&gt;
+&lt;div&gt;Foo&lt;/div&gt;</code></pre>
+		</section>
+	</section>
 
 
 </div>
