@@ -1,175 +1,66 @@
 #!/usr/bin/env node
 
-var _encode_entities = function(value) {
+(function(global) {
 
-	var text = value;
-
-	text = text.split('"').join('&quot;');
-	text = text.split('<').join('&lt;');
-	text = text.split('>').join('&gt;');
-
-	return text;
-
-};
-
-var _encode_inline = function(entities) {
-
-	var text = '';
+	var _BOOK  = require('fs').readFileSync(__dirname + '/book.html').toString('utf8');
+	var _INDEX = require('fs').readFileSync(__dirname + '/index.html').toString('utf8');
 
 
-	entities.forEach(function(entity) {
+	var _fs       = require('fs');
+	var _lexer    = require('./html.js');
+	var _parser   = require('./markdown.js');
+	var _path     = require('path');
 
-		if (entity.token === 'Code') {
 
-			text += ' <code>' + _encode_entities(entity.value) + '</code> ';
-
-		} else if (entity.token === 'Text') {
-
-			if (entity.value.match(/\.|\,|\?|\!/g)) {
-
-				text += entity.value;
-
-			} else {
-
-				if (entity.type === 'bold') {
-					text += ' <b>' + entity.value + '</b> ';
-				} else if (entity.type === 'italic') {
-					text += ' <i>'  + entity.value + '</i> ';
-				} else {
-					text += ' ' + entity.value;
-				}
-
-			}
-
-		} else if (entity.token === 'Image') {
-
-			text += ' <img src="' + entity.value + '" alt="' + entity.type + '"> ';
-
-		} else if (entity.token === 'Link') {
-
-			text += ' <a href="' + entity.value + '">' + entity.type + '</a> ';
-
-		}
-
+	var FILES = process.argv[2].split(':').filter(function(tmp) {
+		return tmp !== '';
 	});
 
 
-	return text.trim();
+	if (FILES.length > 0) {
 
-};
-
-var _encode = function(data) {
-
-	var code         = '';
-	var article_open = false;
-	var section_open = false;
-
-	for (var d = 0, dl = data.length; d < dl; d++) {
-
-		var entry = data[d];
-		if (entry.token === 'Article') {
-
-			if (section_open === true) {
-				code += '\t\t</section>\n';
-			}
-
-			if (article_open === true) {
-				code += '\t</section>\n';
-			}
-
-			code += '\t<section>\n';
-			article_open = true;
-			section_open = false;
-
-		} else if (entry.token === 'Headline') {
-
-			if (section_open === true) {
-				code += '\t\t</section>\n';
-				section_open = false;
-			}
+		var book_index = [];
 
 
-			if (entry.type === 1) {
+		FILES.forEach(function(file) {
 
-				code += '\t\t<section>\n';
-				code += '\t\t\t<h1>' + entry.value + '</h1>\n';
-				code += '\t\t</section>\n';
+			var book_in  = _path.resolve(__dirname + '/../../', file);
+			var book_out = _path.resolve(__dirname + '/../../book/html/' + file.split('/').pop().replace('.md', '.html'));
 
-				section_open = false;
 
-			} else if (entry.type === 2) {
+			var blob = _parser.decode(_fs.readFileSync(book_in, 'utf8').toString('utf8'));
+			if (blob !== null) {
 
-				if (section_open === false) {
-					code += '\t\t<section>\n';
-					section_open = true;
+				var book_data = _lexer.encode(blob);
+				var book_html = './book/html/' + file.split('/').pop().replace('.md', '.html');
+				var book_pdf  = './book/pdf/'  + file.split('/').pop().replace('.md', '.pdf');
+				var book_name = file.split('/').pop().substr(3).replace('.md', '');
+
+				if (book_data !== null && book_data.length > 0) {
+
+					var tmp = _BOOK;
+
+					tmp = tmp.split('${data}').join(book_data);
+					tmp = tmp.split('${name}').join(book_name);
+
+					_fs.writeFileSync(book_out, tmp, 'utf8');
+
+
+					book_index.push('<li><h3>' + book_name + '</h3><a href="' + book_html + '">html</a>, <a href="' + book_pdf + '">pdf</a></li>');
+
 				}
 
-				code += '\t\t\t<h2>' + entry.value + '</h2>\n';
-
 			}
 
-		} else if (entry.token === 'List') {
+		});
 
-			code += '\t\t\t<ul>\n';
 
-			entry.value.forEach(function(item) {
-				code += '\t\t\t\t<li>' + _encode_inline(item) + '</li>\n';
-			});
-
-			code += '\t\t\t</ul>\n';
-
-		} else if (entry.token === 'Paragraph') {
-
-			code += '\t\t\t<p>\n';
-			code += '\t\t\t\t' + _encode_inline(entry.value) + '\n';
-			code += '\t\t\t</p>\n';
-
-		} else if (entry.token === 'Code') {
-
-			code += '<pre class="' + entry.type + '">';
-			code += '<code>';
-			code += _encode_entities(entry.value);
-			code += '</code>';
-			code += '</pre>\n';
-
+		if (book_index.length > 0) {
+			var tmp = _INDEX.split('${index}').join(book_index.join('\n\t'));
+			_fs.writeFileSync(__dirname + '/../../index.html', tmp, 'utf8');
 		}
 
 	}
 
-
-	if (section_open === true) {
-		code += '\t\t</section>\n';
-	}
-
-	if (article_open === true) {
-		code += '\t</section>\n';
-	}
-
-
-	return code;
-
-};
-
-
-
-var fs       = require('fs');
-var parser   = require('./markdown.js');
-var path     = require('path');
-var tpl      = fs.readFileSync(__dirname + '/template.html').toString('utf8');
-var in_path  = path.resolve(__dirname + '/../../', process.argv[2]);
-var out_path = path.resolve(__dirname + '/../../', process.argv[2].split('/').pop().replace('.md', '.html'));
-
-
-var data = parser.decode(fs.readFileSync(in_path, 'utf8').toString('utf8'));
-if (data !== null) {
-
-	var html = _encode(data);
-	if (html.length > 0) {
-
-		html = tpl.replace('${slides}', html);
-		fs.writeFileSync(out_path, html, 'utf8');
-
-	}
-
-}
+})(typeof global !== 'undefined' ? global : this);
 
