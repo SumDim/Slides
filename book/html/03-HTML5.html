@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>AE Series - HTML5</title>
+
+    <meta name="author" content="Christoph Martens">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="/design/reveal.css">
+    <link rel="stylesheet" href="/design/code-zenburn.css">
+    <link rel="stylesheet" href="/design/theme-sky.css">
+
+</head>
+<body>
+
+<div class="reveal">
+<div class="slides">
+
+	<section>
+		<img src="/asset/00-logo.png" width="192" height="192">
+		<h2>HTML5</h2>
+		<p>
+			<a href="http://github.com/INT-WAW">github.com/INT-WAW</a>
+		</p>
+	</section>
+
+	<section>
+		<section>
+			<h1>Meta-Daten</h1>
+		</section>
+		<section>
+			<h2>Meta-Daten</h2>
+			<ul>
+				<li>Gehoeren in den Header der Datei (&lt;head&gt;)</li>
+				<li>Anweisungen fuer den Browser</li>
+				<li>Anweisungen fuer Spiders oder Scraper</li>
+				<li>Anweisungen fuer Crawler und Bots</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel: Meta-Daten</h2>
+<pre class="html"><code>&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;author&quot; content=&quot;Christoph Martens&quot;&gt;
+    &lt;meta name=&quot;robots&quot; content=&quot;noindex, follow&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;
+    &lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot;&gt;
+&lt;/head&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Beispiel: Meta-Daten (Open Graph)</h2>
+			<ul>
+				<li>Meta-Tags auch fuer Social Web</li>
+				<li>Open Graph API (Facebook, Twitter)</li>
+			</ul>
+<pre class="html"><code>&lt;head&gt;
+    &lt;meta name=&quot;og:image&quot; content=&quot;/design/preview.png&quot;&gt;
+    &lt;meta name=&quot;og:image:width&quot; content=&quot;256&quot;&gt;
+    &lt;meta name=&quot;og:image:height&quot; content=&quot;256&quot;&gt;
+    &lt;meta name=&quot;og:description&quot; content=&quot;Awesome website with some content&quot;&gt;
+&lt;/head&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Links</h2>
+			<ul>
+				<li>Links fuer Dokumente</li>
+				<li>Aus Zeiten der digitalen Buecher</li>
+				<li>Anweisungen fuer den Browser</li>
+				<li><code>rel</code>  Attribut ( <code>next</code> , <code>prev</code> , <code>stylesheet</code>  )</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel: Links</h2>
+<pre class="html"><code>&lt;head&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;./design/index.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; media=&quot;print&quot; href=&quot;./design/print.css&quot;/&gt;
+
+    &lt;link rel=&quot;prev&quot; href=&quot;page-01.html&quot;&gt;
+    &lt;link rel=&quot;next&quot; href=&quot;page-03.html&quot;&gt;
+&lt;/head&gt;</code></pre>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Live Coding</h1>
+		</section>
+		<section>
+			<h2>Aufgabe</h2>
+			<ul>
+				<li>Stylesheet <code>./design/index.css</code>  hinzufuegen</li>
+				<li>Print Stylesheet <code>./design/print.css</code>  hinzufuegen</li>
+				<li>Beschreibung und Autor der Website hinzufuegen</li>
+				<li>Encoding auf <code>UTF-8</code>  setzen</li>
+				<li>Optional: Setze korrektes <code>viewport</code>  meta-Tag (Mobile-ready)</li>
+			</ul>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Inhalte</h1>
+		</section>
+		<section>
+			<h2>Bilder</h2>
+			<ul>
+				<li>&lt;img&gt; Tag</li>
+				<li><code>src</code>  Attribut mit <code>URL</code> Wert.</li>
+				<li><code>alt</code>  Alternativer Text (nicht ladbares Bild)</li>
+				<li><code>width height</code>  jeweils mit Pixelwert</li>
+			</ul>
+<pre class="html"><code>&lt;img src=&quot;awesome-01.jpg&quot; alt=&quot;Awesome Stuff&quot;/&gt;
+&lt;img src=&quot;awesome-02.png&quot; width=&quot;100&quot; height=&quot;200&quot;/&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Hyperlinks</h2>
+			<ul>
+				<li>Verknuepfung von Dokumenten und/oder Elementen</li>
+				<li>Verweis via URL und Identifier (#blub)</li>
+				<li>Absolute URL ( <code>/blub.html</code>  )</li>
+				<li>Relative URL ( <code>../blub.html</code>  )</li>
+				<li>Download einer Datei (Anhang oder Text)</li>
+				<li><code>protocol://server:port/path/file.ext#element</code></li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel: Hyperlinks</h2>
+<pre class="html"><code>&lt;a href=&quot;https://github.com&quot;&gt;Click here to visit GitHub&lt;/a&gt;
+&lt;a href=&quot;https://google.com&quot;&gt;Click here to visit Google&lt;/a&gt;
+&lt;a href=&quot;./index.html#seite2&quot;&gt;Go to page 2&lt;/a&gt;
+&lt;a href=&quot;//google.com&quot;&gt;Visit google (use current protocol)&lt;/a&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Beispiel: Protokolle</h2>
+<pre class="html"><code>&lt;a href=&quot;mailto:support@github.com&quot;&gt;E-Mail to GitHub&lt;/a&gt;
+&lt;a href=&quot;ftp://ftp.hs-mannheim.de/setup.zip&quot;&gt;Download via FTP&lt;/a&gt;
+&lt;a href=&quot;./setup.zip&quot;&gt;Download via HTTP or HTTPS&lt;/a&gt;
+&lt;a href=&quot;file:///home/cookiengineer/index.html&quot;&gt;Local File&lt;/a&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Beispiel: Elemente</h2>
+<pre class="html"><code>&lt;a href=&quot;#paragraph1&quot;&gt;First paragraph&lt;/a&gt;
+&lt;a href=&quot;#paragraph2&quot;&gt;Second paragraph&lt;/a&gt;
+
+&lt;p id=&quot;paragraph1&quot;&gt;A long, long time ago ...&lt;/p&gt;
+&lt;p id=&quot;paragraph2&quot;&gt;there was a little script kiddo.&lt;/p&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Hyperlink Beziehungen</h2>
+			<ul>
+				<li>Unterschiedliche Typen von Links</li>
+				<li>Angabe via <code>rel</code>  Attribut</li>
+				<li><code>author</code> , <code>help</code> , <code>license</code> , <code>next</code> , <code>prev</code></li>
+				<li><code>prefetch</code> , <code>nofollow</code> , <code>noreferrer</code></li>
+			</ul>
+		</section>
+		<section>
+			<h2>Hyperlink Beziehungen</h2>
+<pre class="html"><code>&lt;a rel=&quot;download&quot; href=&quot;setup.zip&quot;&gt;Download&lt;/a&gt;
+&lt;a rel=&quot;nofollow&quot; href=&quot;./login.html&quot;&gt;Login&lt;/a&gt;
+&lt;a rel=&quot;license&quot; href=&quot;/LICENSE.txt&quot;&gt;License&lt;/a&gt;
+&lt;a rel=&quot;noreferrer&quot; href=&quot;https://google.com&quot;&gt;Google (external Site)&lt;/a&gt;</code></pre>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Live Coding</h1>
+		</section>
+		<section>
+			<h2>Aufgabe</h2>
+			<ul>
+				<li>Ein <code>menu</code> , <code>header</code> , <code>main</code>  und zwei <code>section</code></li>
+				<li>Eine <code>section</code>  mit id <code>status</code></li>
+				<li>Eine <code>section</code>  mit id <code>tasks</code></li>
+				<li>Eine <code>table</code>  mit id <code>status-overview</code></li>
+				<li>Verlinke das Menu mit den IDs der Sektionen</li>
+			</ul>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>DOM</h1>
+		</section>
+		<section>
+			<h2>DOM</h2>
+			<ul>
+				<li>Document Object Model</li>
+				<li>Trennung Inhalt, Design und Verhalten</li>
+				<li>HTML5 CSS3, JavaScript / ES</li>
+				<li>Bereitstellung DOM APIs fuer JS</li>
+				<li>Bereitstellung DOM APIs fuer CSS</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Display Model</h2>
+			<ul>
+				<li><b>Alle</b>  Elemente haben ein Display Model</li>
+				<li>Haeufigst verwendete Models sind:</li>
+				<li><code>Block</code> , <code>Inline-Block</code> , <code>Inline</code></li>
+				<li>Neuerdings auch <code>Flex</code> bzw. Flexbox</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel: Display Model</h2>
+<pre class="html"><code>&lt;div&gt;Dieses Element hat einen folgenden Absatz&lt;/div&gt;
+&lt;p&gt;Dieses Element ebenfalls&lt;/p&gt;
+
+&lt;span&gt;Diese&lt;/span&gt;
+&lt;span&gt;Elemente&lt;/span&gt;
+&lt;span&gt;nicht!&lt;/span&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Display Model</h2>
+			<ul>
+				<li>Beeinflussung des Display Models via CSS</li>
+				<li>CSS Angabe <b>ehemals</b>  via <code>style</code>  Attribut</li>
+				<li>CSS Angabe <b>sauberer</b>  via Style Sheet</li>
+				<li>CSS Syntax: <code>display: block</code></li>
+			</ul>
+<pre class="html"><code>&lt;head&gt;
+    &lt;style&gt;
+        span {
+            display: block;
+        }
+        span.old {
+            display: inline;
+            text-decoration: line-through;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div&gt;Dieses Element hat einen folgenden Absatz&lt;/div&gt;
+&lt;p&gt;Dieses Element ebenfalls&lt;/p&gt;
+
+&lt;span style=&quot;background:red;color:blue;&quot;&gt;Diese&lt;/span&gt;
+&lt;span&gt;Elemente&lt;/span&gt;
+&lt;span&gt;&lt;span class=&quot;old&quot;&gt;nicht!&lt;/span&gt; jetzt auch!&lt;/span&gt;
+&lt;/body&gt;</code></pre>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>CSS</h1>
+		</section>
+		<section>
+			<h2>CSS</h2>
+			<ul>
+				<li>Cascading Style Sheet</li>
+				<li>Aktueller Standard: CSS3 / CSS4</li>
+				<li>Selektoren fuer Elemente</li>
+				<li>Mehrere Elemente: Klassen ( <code>.class</code>  )</li>
+				<li>Einzelne Elemente: IDs ( <code>#id</code>  )</li>
+				<li>Direkte Strukturen: Child ( <code>html</code>  > <code>body</code>  )</li>
+				<li>Verhalten: Pseudoklassen ( <code>a:hover</code> , <code>a:visited</code>  )</li>
+			</ul>
+		</section>
+		<section>
+			<h2>CSS3</h2>
+			<ul>
+				<li>Optische Gestaltung im Browser</li>
+				<li>Statisches Design und Animiertes Design</li>
+				<li>Textuelle Inhalte (Schriftart, -groesse, -stil)</li>
+				<li>Zeichenabstand Zeilenabstand und Einrueckung</li>
+				<li>Textfarbe Hintergrundfarbe, Rahmen</li>
+				<li>Transforms (Positionierung in 2D und 3D Raum)</li>
+				<li>Transitions (Uebergaenge von - bis)</li>
+				<li>Animationen (wiederholte Uebergaenge von - bis)</li>
+			</ul>
+		</section>
+		<section>
+			<h2>CSS3</h2>
+			<ul>
+				<li>CSS enthaelt CSS Regeln (Rules)</li>
+				<li>Eine Regel enthaelt mehrere Statements</li>
+				<li>CSS 2.1+ Lexer mergen nach gleichwertigen Selektoren</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Aufbau CSS Regel</h2>
+			<ul>
+				<li>Selektor legt Geltungsbereich fest</li>
+				<li>Deklarationsblock bestimmt Darstellung des Geltungsbereichs</li>
+				<li>Deklarationsblock besteht aus (n) Eigenschaft <code>:</code>  Wert</li>
+				<li>Statements werden durch Semikolon ( <code>;</code>  ) getrennt</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Aufbau CSS Regel</h2>
+<pre class="css"><code>Selektor {
+    Eigenschaft: Wert;
+    Eigenschaft: Wert;
+}</code></pre>
+		</section>
+		<section>
+			<h2>Beispiel: CSS Regel</h2>
+<pre class="css"><code>h1 { font-size: 12px; }
+h1 { background: red; }</code></pre>
+<pre class="css"><code>h1 {
+    font-size: 12px;
+    background: red;
+}</code></pre>
+		</section>
+		<section>
+			<h2>Selektoren</h2>
+			<ul>
+				<li>Unterschiedliche Selektorarten</li>
+				<li>Unterschiedliche Wertigkeit</li>
+				<li>Vererbung der Wertigkeit in Hierarchie</li>
+			</ul>
+<pre class="css"><code>#foo .bar &gt; div { color: red;  }
+#foo .bar div {   color: blue; }</code></pre>
+		</section>
+		<section>
+			<h2>Selektoren</h2>
+			<ul>
+				<li>Inline-Styles ( <code>style=&quot;color:red&quot;</code>  )</li>
+				<li>Wertigkeit <code>1000</code></li>
+			</ul>
+<pre class="html"><code>&lt;div style=&quot;color:red&quot;&gt;Red Text&lt;/div&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Selektoren</h2>
+			<ul>
+				<li>Identifier ( <code>id=&quot;foo&quot;</code>  )</li>
+				<li>Wertigkeit <code>100</code></li>
+			</ul>
+<pre class="html"><code>&lt;style&gt;
+#foo { color: red; }
+&lt;/style&gt;
+
+&lt;div id=&quot;foo&quot;&gt;Red Text&lt;/div&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Selektoren</h2>
+			<ul>
+				<li>Klassen und Pseudo-Klassen</li>
+				<li>Klassen sind (n) Arten der Elemente</li>
+				<li>Pseudo-Klassen sind Zustaende der Elemente</li>
+				<li>Wertigkeit <code>10</code></li>
+			</ul>
+<pre class="html"><code>&lt;style&gt;
+.foo    { color: red; }
+a:hover { color: purple; }
+&lt;/style&gt;
+
+&lt;div class=&quot;foo&quot;&gt;Red Text&lt;/div&gt;
+&lt;a href=&quot;#&quot;&gt;Blue Text on Mouse Hover&lt;/a&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Selektoren</h2>
+			<ul>
+				<li>Attribute</li>
+				<li>Wertigkeit <code>10</code></li>
+			</ul>
+<pre class="html"><code>&lt;style&gt;
+div     { color: blue; }
+div[id] { color: red;  }
+&lt;/style&gt;
+
+&lt;div&gt;Blue Text&lt;/div&gt;
+&lt;div id=&quot;foo&quot;&gt;Red Text&lt;/div&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Selektoren</h2>
+			<ul>
+				<li>Elemente und Pseudo-Elemente</li>
+				<li>Pseudo-Elemente sind innerhalb der Elemente</li>
+				<li>Wertigkeit <code>1</code></li>
+			</ul>
+<pre class="html"><code>&lt;style&gt;
+div { color: red; }
+div:before, div:after {
+    display: inline-block;
+    content: &quot;woop&quot;;
+    color: blue;
+}
+&lt;/style&gt;
+
+&lt;div&gt;Text&lt;/div&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Selektoren</h2>
+			<ul>
+				<li>Universalselektor</li>
+				<li>Wertigkeit <code>1</code></li>
+			</ul>
+<pre class="html"><code>&lt;style&gt;
+* { background: red; }
+&lt;/style&gt;
+
+&lt;div&gt;Foo&lt;/div&gt;
+&lt;p&gt;Bar&lt;/p&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Selektoren</h2>
+			<ul>
+				<li><code>a</code>  ~ <code>b</code> Jedes b, was ein vorhergehendes a hat</li>
+				<li><code>a</code>  + <code>b</code> Jedes b, was direkt nach einem a folgt</li>
+				<li><code>a</code>  > <code>b</code> Jedes b, was ein direktes Kindelement von a ist</li>
+			</ul>
+			<p>
+				Weitere Selektoren auf <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">CSS/Reference</a> im MDN.
+			</p>
+		</section>
+		<section>
+			<h2>Beispiel: Selektoren</h2>
+<pre class="css"><code>html body {
+  background: #222222;
+  color: #ffffff;
+  font-size: 32px;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+#headline {
+  background: red;
+}
+
+.stuff {
+  border: 1px solid red;
+}</code></pre>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Box Model</h1>
+		</section>
+		<section>
+			<h2>width, height und z-index</h2>
+			<ul>
+				<li><b>Alle</b>  Elemente haben <code>width</code>  und <code>height</code></li>
+				<li>Default-Wert ist <code>inherit</code> bzw. <code>auto</code></li>
+				<li>Einheiten fuer Dimensionen sind <code>em</code> , <code>px</code> , <code>pt</code></li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel: width, height</h2>
+<pre class="html"><code>&lt;style&gt;
+div {
+    width: 30%;
+    height: 200px;
+    background: red;
+}
+&lt;/style&gt;
+
+&lt;div&gt;Foo&lt;/div&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Position</h2>
+			<ul>
+				<li><b>Alle</b>  Elemente sind statisch by default</li>
+				<li>Absolute Inhalte mit <code>position: absolute</code></li>
+				<li>Fixierte Inhalte mit <code>position: fixed</code></li>
+				<li>Statische Inhalte mit <code>position: static</code></li>
+				<li>Relative Inhalte mit <code>position: relative</code></li>
+			</ul>
+		</section>
+		<section>
+			<h2>Absolute Position</h2>
+			<p>
+				Wenn position <code>absolute</code>  or <code>fixed</code> dann haben Elemente eine Position absolut zur linken oberen Ecke des Bildschirms und eine absolute Breite und Hoehe.
+			</p>
+		</section>
+		<section>
+			<h2>Beispiel: Absolute Position</h2>
+<pre class="html"><code>&lt;style&gt;
+div {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 100px;
+    left: 100px;
+    right: auto;
+    bottom: auto;
+    background: red;
+}
+&lt;/style&gt;
+&lt;div&gt;Example&lt;/div&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Relative Position</h2>
+			<p>
+				Wenn position <code>static</code>  or <code>relative</code>  dann haben Elemente eine Position <code>relativ</code> zu ihrem umgebenden Element. Der Uebergang von <code>static</code>  zu <code>absolute</code>  or <code>fixed</code>  ist <b>NUR</b>  mit <code>relative</code> moeglich.
+			</p>
+		</section>
+		<section>
+			<h2>Beispiel: Static und Relative</h2>
+<pre class="html"><code>&lt;style&gt;
+div {
+    margin: 50px;
+    padding: 50px;
+    border: 1px solid black;
+}
+div &gt; div {
+    position: relative;
+    background: rgba(255,0,0,0.5);
+}
+div &gt; div &gt; p {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: red;
+}
+&lt;/style&gt;
+&lt;div&gt;
+  I'm static
+  &lt;div&gt;
+    I'm relative
+    &lt;p&gt;I'm absolute&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Box Model: Absolute und Fixed</h2>
+			<ul>
+				<li>Angabe <code>width</code>  und <code>height</code>  mit <code>px</code> , <code>%</code>  moeglich</li>
+				<li>Absolut zur linken oberen Ecke des Bildschirms</li>
+				<li>Absolut zum eigenen Element ohne Vererbung</li>
+				<li>Position  <b>NUR</b>  noch mit <code>top</code> , <code>right</code> , <code>bottom</code> , <code>left</code></li>
+				<li><code>z-index</code>  zum Einfluss der Zeichenreihenfolge moeglich</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel: Absolute und Fixed</h2>
+<pre class="html"><code>&lt;style&gt;
+  div {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+  }
+&lt;/style&gt;
+
+&lt;div style=&quot;background:#ff0000;top:20px;left:20px;z-index:1&quot;&gt;&lt;/div&gt;
+&lt;div style=&quot;background:#ffff00;top:50px;left:50px;z-index:10&quot;&gt;&lt;/div&gt;
+&lt;div style=&quot;background:#0000ff;top:80px;left:80px;z-index:1&quot;&gt;&lt;/div&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Box Model: Static und Relative</h2>
+			<ul>
+				<li>Angabe <code>width</code>  und <code>height</code>  mit <code>px</code> , <code>%</code>  moeglich</li>
+				<li>Relativ zum umgebenden Element</li>
+				<li><code>z-index</code>  hat keine Wirkung bei <code>static</code></li>
+				<li><code>z-index</code>  hat Einfluss bei <code>relative</code></li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel: Absolute und Fixed</h2>
+<pre class="html"><code>&lt;style&gt;
+  div {
+    position: static;
+    width: 100px;
+    height: 100px;
+  }
+&lt;/style&gt;
+
+&lt;div style=&quot;background:#ff0000;margin-top:20px;margin-left:20px;z-index:1&quot;&gt;&lt;/div&gt;
+&lt;div style=&quot;background:#ffff00;margin-top:-50px;margin-left:50px;z-index:10&quot;&gt;&lt;/div&gt;
+&lt;div style=&quot;background:#0000ff;margin-top:-30px;margin-left:80px;z-index:1&quot;&gt;&lt;/div&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Box Model: Margin und Padding</h2>
+			<ul>
+				<li><b>Alle</b>  Elemente haben <code>margin</code>  und <code>padding</code></li>
+				<li><b>Alle</b>  Elemente koennen eine <code>border</code>  haben</li>
+				<li><code>margin</code>  wirkt nur auf Position <b>RELATIV</b>  zum umgebenden Element</li>
+				<li><code>margin</code>  wirkt nicht bei <code>absolute</code>  oder <code>fixed</code>  Positionierung</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Demo: Margin und Padding</h2>
+			<p>
+				Live-Demo mit Inspect Element. Aufzeigen von Static, Relative, Absolute, Fixed.
+			</p>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Live Coding</h1>
+		</section>
+		<section>
+			<h2>Aufgabe</h2>
+			<ul>
+				<li>Baue das <code>menu</code>  mit <code>position:fixed</code>  linksbuendig</li>
+				<li>Baue die <code>main</code>  (Inhalt) mit <code>position:absolute</code>  rechtsbuendig</li>
+				<li>Setze <code>overflow:auto</code>  auf die <code>main</code>  und erklaere den Unterschied</li>
+				<li>Optional: Passe die Farben im Menu an ( auch fuer <code>a:hover</code>  )</li>
+			</ul>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Transitions</h1>
+		</section>
+		<section>
+			<h2>Transitions</h2>
+			<ul>
+				<li>Keyframe Interpolation</li>
+				<li>Uebergang (Transition) zwischen zwei Zustaenden</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Transition Properties</h2>
+			<ul>
+				<li><code>transition</code>  ist Shorthand Notation fuer:</li>
+				<li><code>transition-delay</code>  in <code>ms</code>  oder <code>s</code></li>
+				<li><code>transition-duration</code>  in <code>ms</code>  oder <code>s</code></li>
+				<li><code>transition-property</code>  mit <code>all</code>  oder einzelne Properties</li>
+				<li><code>transition-timing-function</code>  fuer eigene Interpolation</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel: Transition</h2>
+<pre class="html"><code>&lt;style&gt;
+div {
+	width: 50px;
+	height: 50px;
+	background: red;
+	margin-left: 0px;
+	transition: 1000ms margin ease-out;
+}
+div.active {
+	margin-left: 200px;
+	transition: 2000ms margin ease-out;
+	background: blue;
+}
+&lt;/style&gt;
+&lt;div onclick=&quot;this.className = this.className === 'active' ? '' : 'active';&quot;&gt;Foo&lt;/div&gt;</code></pre>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Vendor Prefixes</h1>
+		</section>
+		<section>
+			<h2>Vendor Prefixes</h2>
+			<ul>
+				<li>Nicht-Standardisiert (in Entwicklung)</li>
+				<li>Prototypischer CSS Support</li>
+				<li>Alter Browser ist scheisse und alt</li>
+				<li>Alter Browser braucht Vendor Prefixes</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel: Vendor Prefixes</h2>
+			<ul>
+				<li><code>-moz-transform</code>  wird zu <code>transform</code></li>
+				<li><code>-ms-transform</code>  wird zu <code>transform</code></li>
+				<li><code>-o-transform</code>  wird zu <code>transform</code></li>
+				<li><code>-webkit-transform</code>  wird zu <code>transform</code></li>
+			</ul>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Animations</h1>
+		</section>
+		<section>
+			<h2>Animations</h2>
+			<ul>
+				<li>Wiederholungen von Transitions</li>
+				<li>Keyframe Interpolation</li>
+				<li>Angabe wie Transitions</li>
+				<li>Keyframes mit Vendor Prefix</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel: Animations</h2>
+<pre class="html"><code>&lt;style&gt;
+@-webkit-keyframes move {
+	from { background:red;  margin-left: 0px;   }
+	to   { background:blue; margin-left: 200px; }
+}
+
+@keyframes move {
+	from { background:red;  margin-left: 0px;   }
+	to   { background:blue; margin-left: 200px; }
+}
+
+div {
+	width: 50px;
+	height: 50px;
+	background: red;
+	margin-left: 0px;
+	animation: move 1000ms ease-out 0s infinite;
+}
+&lt;/style&gt;
+&lt;div&gt;Foo&lt;/div&gt;</code></pre>
+		</section>
+		<section>
+			<h2>Beispiel: Animations</h2>
+<pre class="html"><code>&lt;style&gt;
+@-webkit-keyframes move {
+	0%   { background:red;  margin-left: 0px;   }
+	50%  { background:blue; margin-left: 200px; }
+	100% { background:red;  margin-left: 0px;   }
+}
+
+@keyframes move {
+	0%   { background:red;  margin-left: 0px;   }
+	50%  { background:blue; margin-left: 200px; }
+	100% { background:red;  margin-left: 0px;   }
+}
+
+div {
+	width: 50px;
+	height: 50px;
+	background: red;
+	margin-left: 0px;
+	animation: move 1000ms ease-out 0s infinite;
+}
+&lt;/style&gt;
+&lt;div&gt;Foo&lt;/div&gt;</code></pre>
+		</section>
+	</section>
+
+
+</div>
+</div>
+
+<script src="/source/head.min.js"></script>
+<script src="/source/reveal.js"></script>
+<script src="/source/preview.js"></script>
+
+</body>
+</html>

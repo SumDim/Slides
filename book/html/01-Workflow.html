@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>AE Series - Workflow</title>
+
+    <meta name="author" content="Christoph Martens">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="/design/reveal.css">
+    <link rel="stylesheet" href="/design/code-zenburn.css">
+    <link rel="stylesheet" href="/design/theme-sky.css">
+
+</head>
+<body>
+
+<div class="reveal">
+<div class="slides">
+
+	<section>
+		<img src="/asset/00-logo.png" width="192" height="192">
+		<h2>Workflow</h2>
+		<p>
+			<a href="http://github.com/INT-WAW">github.com/INT-WAW</a>
+		</p>
+	</section>
+
+	<section>
+		<section>
+			<h1>Workflow</h1>
+		</section>
+		<section>
+			<h2>Inhalt</h2>
+			<ul>
+				<li>Terminologie</li>
+				<li>Triangular Workflow</li>
+				<li>Awesome GitHub</li>
+				<li>Projekt Setup</li>
+				<li>Live-Coding</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Requisiten</h2>
+			<ul>
+				<li>GitHub Account</li>
+				<li>github.com/INT-WAW ist GitHub Orga</li>
+				<li>Texteditor ( Sublime Text, Atom, VIM )</li>
+				<li>Git Bash (fuer Windows Noobs)</li>
+			</ul>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Terminologie</h1>
+		</section>
+		<section>
+			<h2>Repository</h2>
+			<ul>
+				<li>Verzeichnis fuer Datenspeicherung</li>
+				<li>Typischerweise auf Servern (oder Peers)</li>
+				<li>Versionsverwaltung</li>
+				<li>Protokolle von Veraenderungen</li>
+				<li>Konfliktaufloesung</li>
+				<li>Metadaten fuer Paketmanager</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Clone</h2>
+			<ul>
+				<li>Duplikat eines Repositories</li>
+				<li>Backup-Aspekt</li>
+				<li>Offline-Verfuegbarkeit</li>
+				<li>Dezentrale Vorkommnis</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel</h2>
+<pre class="bash"><code>mkdir /opt/lycheejs;
+
+git clone https://github.com/Artificial-Engineering/lycheeJS.git /opt/lycheejs;</code></pre>
+		</section>
+		<section>
+			<h2>Commit</h2>
+			<ul>
+				<li>Veraenderung einer Datei</li>
+				<li>Veraenderung zu einem Zeitpunkt</li>
+				<li>Entfernen ( <code>-</code>  ) oder Hinzufuegen ( <code>+</code>  )</li>
+				<li>Zeilenbasiert mit Textuellem Inhalt</li>
+				<li>Dateibasiert mit Binaerem Inhalt</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel</h2>
+<pre class="bash"><code>cd /opt/lycheejs;
+
+echo &quot;Awesome Modification&quot; &gt; newfile.txt;
+git add ./newfile.txt;
+git commit -m &quot;Awesome new commit&quot;;</code></pre>
+		</section>
+		<section>
+			<h2>Revision</h2>
+			<ul>
+				<li>Synonym fuer Version (Hash)</li>
+				<li>Entwicklungsstadium der Software</li>
+				<li>Einzelner Commit</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Tag</h2>
+			<ul>
+				<li>Entwicklungszeitpunkt</li>
+				<li>Version der Software</li>
+				<li>Serie an Commits</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel</h2>
+<pre class="bash"><code>cd /opt/lycheejs;
+
+echo &quot;Awesome Modification&quot; &gt; newfile.txt;
+git add ./newfile.txt;
+git commit -m &quot;Awesome new commit&quot;;
+
+git tag v1.0 -m &quot;Software is stable nao&quot;;
+git push origin --tags;</code></pre>
+		</section>
+		<section>
+			<h2>Branch</h2>
+			<ul>
+				<li>master ist stable</li>
+				<li>Variante der Software</li>
+				<li>Feature (Serie an Commits)</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel</h2>
+<pre class="bash"><code>cd /opt/lycheejs;
+
+git checkout development;
+git checkout -b my-feature;
+
+echo &quot;awesome&quot; &gt; feature.txt;
+git commit -m &quot;:sparkles: Started work on my-feature&quot;;</code></pre>
+		</section>
+		<section>
+			<h2>Fork</h2>
+			<ul>
+				<li>Abzweigung des Projekts</li>
+				<li>Fork ist neue Software</li>
+				<li>Upstream ist alte Software</li>
+				<li>Beispiel: LibreOffice ist Fork von OpenOffice</li>
+				<li>Beispiel: LibreSSL ist Fork von OpenSSL</li>
+				<li>Beispiel: Blink ist Fork von WebKit ist Fork von KHTML</li>
+			</ul>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Triangularer Workflow</h1>
+		</section>
+		<section>
+			<h2>Uebersicht</h2>
+			<p>
+				<img src="/asset/01-triangular-workflow.png" alt="workflow">
+			</p>
+		</section>
+		<section>
+			<h2>1. Pull</h2>
+			<ul>
+				<li>Pull von Upstream Repository</li>
+				<li>Upstream Repository ist behind</li>
+			</ul>
+		</section>
+		<section>
+			<h2>2. Commit</h2>
+			<ul>
+				<li>Lokaler Merge von Commits</li>
+				<li>Lokale Feature Branches</li>
+				<li>Lokale Commits sind ahead</li>
+			</ul>
+		</section>
+		<section>
+			<h2>3. Push</h2>
+			<ul>
+				<li>Push zu eigenem Fork (Origin)</li>
+				<li>Origin Repository ist ahead</li>
+				<li>Keine Merge Conflicts</li>
+			</ul>
+		</section>
+		<section>
+			<h2>4. Pull Request</h2>
+			<ul>
+				<li>Fork Maintainer initiiert Pull Request</li>
+				<li>Upstream Maintainer merged Pull Request</li>
+				<li>Keine Merge Conflicts</li>
+				<li>Alle sind gluecklich</li>
+				<li>Suck it, SVN und CVS</li>
+			</ul>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Awesome GitHub</h1>
+		</section>
+		<section>
+			<h2>Einfache Forks</h2>
+			<p>
+				<img src="/asset/01-github-fork.png" alt="github-fork">
+			</p>
+		</section>
+		<section>
+			<h2>Einfache Pull Requests</h2>
+			<p>
+				<img src="/asset/01-github-pull-request.png" alt="github-pull-request">
+			</p>
+		</section>
+		<section>
+			<h2>Commits</h2>
+			<ul>
+				<li><code>Fixes</code>  issue <code>#1337</code></li>
+				<li><code>Solves #1337</code></li>
+				<li><code>Closes</code>  issue <code>#1337</code></li>
+				<li><code>More</code>  work on issue <code>#1337</code></li>
+			</ul>
+		</section>
+		<section>
+			<h2>Issues</h2>
+			<ul>
+				<li>Probleme und Diskussionen</li>
+				<li>Verlinkung von Contributors ( <code>@username</code>  )</li>
+				<li>Verlinkung von Commits ( <code>@hash</code>  )</li>
+				<li>Verlinkung von Issues ( <code>#issue</code>  )</li>
+				<li>Verlinking von Code Reviews</li>
+				<li>Votes und Reactions</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Code Reviews</h2>
+			<ul>
+				<li>Kommentare zu Commits</li>
+				<li>Einbettung in Issues</li>
+				<li>Einbettung in Wikis</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Wikis</h2>
+			<ul>
+				<li>Markdown Syntax</li>
+				<li>Einbettung in allen Dateien ( <code>.md</code>  )</li>
+				<li>Einbettung in Issues und Commits</li>
+				<li>GitHub Code Editor</li>
+			</ul>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Projekt Setup</h1>
+		</section>
+		<section>
+			<h2>Aufgabe</h2>
+			<ul>
+				<li>Installiere git (git-bash)</li>
+				<li>Forke die Boilerplate <a href="">1</a></li>
+				<li>Clone deinen Fork lokal</li>
+				<li>Fuege Inhalt der HTML5 Datei hinzu</li>
+				<li>Erstelle einen Feature Branch</li>
+				<li>Habe Commits von ALLEN Teammitgliedern</li>
+				<li>Erstelle einen Pull Request</li>
+			</ul>
+			<p>
+				<a href="">1</a> github.com/INT-WAW/Boilerplate.git
+			</p>
+		</section>
+	</section>
+
+
+</div>
+</div>
+
+<script src="/source/head.min.js"></script>
+<script src="/source/reveal.js"></script>
+<script src="/source/preview.js"></script>
+
+</body>
+</html>
