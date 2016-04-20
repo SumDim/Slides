@@ -78,7 +78,7 @@ xhr.send(null);</code></pre>
 		<section>
 			<h2>Aufgabe</h2>
 			<ul>
-				<li>Request zu <code>botnet.artificial.engineering</code></li>
+				<li>GET Request zu <code>botnet.artificial.engineering</code></li>
 				<li>Port ist <code>8080</code></li>
 				<li>Pfad ist <code>/api/Status</code></li>
 				<li>Parse JSON Daten und logge Antwort in console</li>
@@ -112,9 +112,157 @@ console.log(element); // tbody Element API</code></pre>
 		</section>
 		<section>
 			<h2>Element API</h2>
+			<ul>
+				<li>DOM Elemente vererben von Web IDL Interfaces</li>
+				<li>Jedes Element vererbt von HTMLElement</li>
+				<li>Beispiel: HTMLDivElement</li>
+				<li>Behinderte Schreibweise</li>
+				<li>Namespaces aus XHTML moeglich, aber unbrauchbar</li>
+				<li><code>data-\*</code>  Attribute fuer Datenverhalten</li>
+			</ul>
 		</section>
 		<section>
-			<h2>TODO</h2>
+			<h2>Element API</h2>
+			<ul>
+				<li><code>innerHTML</code> Property (Crappy, aber einfach)</li>
+				<li><code>getAttribute(name)</code>  API</li>
+				<li><code>document.createElement(tag)</code>  API</li>
+				<li><code>document.createDocumentFragment()</code>  API</li>
+			</ul>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Formulare</h1>
+		</section>
+		<section>
+			<h2>Form Element</h2>
+			<ul>
+				<li><code>form</code>  Tag</li>
+				<li>Legacy Shit, nutzt sowieso keiner mehr</li>
+				<li>Damals mit MIME attachment encoding</li>
+				<li>Ja genauso crappy wie E-Mails</li>
+				<li>Nutzen wir nicht, da behindert</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Input Element</h2>
+			<ul>
+				<li><code>input</code>  Tag</li>
+				<li><code>type</code>  Attribut ( <code>text</code> , <code>range</code> , <code>number</code> , <code>date</code>  )</li>
+				<li><code>value</code>  Attribut</li>
+			</ul>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Live Coding</h1>
+		</section>
+		<section>
+			<h2>Aufgabe</h2>
+			<ul>
+				<li>Button mit <code>start</code>  und <code>stop</code></li>
+				<li>POST Request zu <code>botnet.artificial.engineering</code></li>
+				<li>Port ist <code>8080</code></li>
+				<li>Pfad ist <code>/api/Status</code></li>
+				<li>Sende JSON Inhalt via <code>xhr.send(data)</code></li>
+				<li>Inhalt ist: id, action ( <code>stop</code>  or <code>start</code>  )</li>
+				<li>Hint: Google JSON xhr send MDN</li>
+			</ul>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>HTTP Fetch</h1>
+		</section>
+		<section>
+			<h2>Fetch API</h2>
+			<ul>
+				<li>Gemacht fuer HTTP 2.0</li>
+				<li>Gemacht fuer Promises</li>
+				<li>Awesome API, but not so awesome Vendors</li>
+				<li>Laeuft in Firefox und Chrome</li>
+				<li>Nicht in Safari oder Edge (because Retards)</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Fetch API</h2>
+			<ul>
+				<li>Fetch API nutzt Promises</li>
+				<li>deshalb async/await faehige API</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel</h2>
+<pre class="javascript"><code>var img = document.querySelector('#status img');
+
+fetch('fancy.jpg').then(function(response) {
+	return response.blob();
+}).then(function(response) {
+
+	var url = URL.createObjectURL(response);
+	img.src = url;
+
+});</code></pre>
+		</section>
+		<section>
+			<h2>Beispiel (ES7)</h2>
+<pre class="javascript"><code>var img  = document.querySelector('#status img');
+(async() =&gt; {
+
+	var blob = await fetch('fancy.jpg').then(response =&gt; response.blob);
+	var url  = await URL.createObjectURL(response);
+	img.src = url;
+	
+})();</code></pre>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Promises</h1>
+		</section>
+		<section>
+			<h2>Promises</h2>
+			<ul>
+				<li>Callbacks sind behindert</li>
+				<li>Promises are awesome</li>
+				<li>Legacy Browsers are NOT</li>
+				<li>Abstraktionsidee von asynchronem Code</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel</h2>
+<pre class="javascript"><code>var foo = new Promise(function(resolve, reject) {
+
+	setTimeout(function() {
+		resolve();
+	}, 3000);
+
+});
+
+foo.then(function(val) {
+	console.log(val);
+});
+
+foo.then(function(val) {
+	div.innerHTML = 'WOOOT ' + val;
+});</code></pre>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Live Coding</h1>
+		</section>
+		<section>
+			<h2>Aufgabe</h2>
+			<ul>
+				<li>Migriere den bestehenden Code zu Fetch API</li>
+				<li>Nutze ein richtiges Promise</li>
+				<li>Teste in anderen Browsern</li>
+				<li>Finde heraus, welcher Browser scheisse ist</li>
+				<li>Google Promise Polyfill IE</li>
+				<li>Microsoft Fanboys: Google Fetch Polyfill IE</li>
+			</ul>
 		</section>
 	</section>
 
