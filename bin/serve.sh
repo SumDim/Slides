@@ -1,5 +1,7 @@
 #!/bin/bash
 
+./bin/generate.sh;
+
 
 PYTHON3=`which python3`;
 

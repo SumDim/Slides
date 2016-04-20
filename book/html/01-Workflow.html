@@ -1,9 +1,10 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
 
-    <title>INT - Christoph Martens</title>
+    <title>AE Series - Workflow</title>
 
     <meta name="author" content="Christoph Martens">
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -21,11 +22,10 @@
 <div class="slides">
 
 	<section>
-		<h2>INT - Webtechnologien</h2>
-		<h3>Christoph Martens</h3>
+		<img src="/asset/00-logo.png" width="192" height="192">
+		<h2>Workflow</h2>
 		<p>
-			<small>Created by <a href="https://cookiengineer.github.io">Christoph Martens</a></small><br>
-			<small>Github: <a href="https://github.com/cookiengineer">@cookiengineer</a></small>
+			<a href="http://github.com/INT-WAW">github.com/INT-WAW</a>
 		</p>
 	</section>
 
@@ -33,28 +33,26 @@
 		<section>
 			<h1>Workflow</h1>
 		</section>
-
 		<section>
 			<h2>Inhalt</h2>
 			<ul>
 				<li>Terminologie</li>
 				<li>Triangular Workflow</li>
 				<li>Awesome GitHub</li>
-				<li>Projekt Setup (Live-Coding)</li>
+				<li>Projekt Setup</li>
+				<li>Live-Coding</li>
 			</ul>
 		</section>
-
 		<section>
 			<h2>Requisiten</h2>
 			<ul>
 				<li>GitHub Account</li>
-				<li>github.com/INT-WAW</li>
-				<li>Texteditor (Sublime Text, Atom, VIM)</li>
+				<li>github.com/INT-WAW ist GitHub Orga</li>
+				<li>Texteditor ( Sublime Text, Atom, VIM )</li>
+				<li>Git Bash (fuer Windows Noobs)</li>
 			</ul>
 		</section>
 	</section>
-
-
 	<section>
 		<section>
 			<h1>Terminologie</h1>
@@ -73,36 +71,35 @@
 		<section>
 			<h2>Clone</h2>
 			<ul>
-				<li>Duplikat des Repositories</li>
+				<li>Duplikat eines Repositories</li>
 				<li>Backup-Aspekt</li>
 				<li>Offline-Verfuegbarkeit</li>
-				<li>Dezentrale Nutzung</li>
+				<li>Dezentrale Vorkommnis</li>
 			</ul>
 		</section>
 		<section>
 			<h2>Beispiel</h2>
-<pre class="bash"><code>mkdir ./lycheeJS;
-git clone https://github.com/Artificial-Engineering/lycheeJS.git;</code></pre>
+<pre class="bash"><code>mkdir /opt/lycheejs;
+
+git clone https://github.com/Artificial-Engineering/lycheeJS.git /opt/lycheejs;</code></pre>
 		</section>
 		<section>
 			<h2>Commit</h2>
 			<ul>
 				<li>Veraenderung einer Datei</li>
 				<li>Veraenderung zu einem Zeitpunkt</li>
-				<li>Entfernen (-) oder Hinzufuegen (+)</li>
-				<li>Zeilenbasiert bei Textuellem Inhalt</li>
-				<li>Dateibasiert bei Binaerem Inhalt</li>
+				<li>Entfernen ( <code>-</code>  ) oder Hinzufuegen ( <code>+</code>  )</li>
+				<li>Zeilenbasiert mit Textuellem Inhalt</li>
+				<li>Dateibasiert mit Binaerem Inhalt</li>
 			</ul>
 		</section>
 		<section>
 			<h2>Beispiel</h2>
-<pre class="bash"><code>mkdir ./lycheeJS;
-git clone https://github.com/Artificial-Engineering/lycheeJS.git;
+<pre class="bash"><code>cd /opt/lycheejs;
 
-echo "Awesome Content" &gt; newfile.txt;
+echo &quot;Awesome Modification&quot; &gt; newfile.txt;
 git add ./newfile.txt;
-git commit -m "Awesome new content";
-</code></pre>
+git commit -m &quot;Awesome new commit&quot;;</code></pre>
 		</section>
 		<section>
 			<h2>Revision</h2>
@@ -122,34 +119,32 @@ git commit -m "Awesome new content";
 		</section>
 		<section>
 			<h2>Beispiel</h2>
-<pre class="bash"><code>mkdir ./lycheeJS;
-git clone https://github.com/Artificial-Engineering/lycheeJS.git;
+<pre class="bash"><code>cd /opt/lycheejs;
 
-echo "Awesome Content" &gt; newfile.txt;
+echo &quot;Awesome Modification&quot; &gt; newfile.txt;
 git add ./newfile.txt;
-git commit -m "Awesome new content";
+git commit -m &quot;Awesome new commit&quot;;
 
-git tag v1.0 -m "Software is stable nao.";
+git tag v1.0 -m &quot;Software is stable nao&quot;;
 git push origin --tags;</code></pre>
 		</section>
 		<section>
 			<h2>Branch</h2>
 			<ul>
-				<li>Abzweigung von master-Branch</li>
+				<li>master ist stable</li>
 				<li>Variante der Software</li>
 				<li>Feature (Serie an Commits)</li>
 			</ul>
 		</section>
 		<section>
 			<h2>Beispiel</h2>
-<pre class="bash"><code>
-git clone https://github.com/Artificial-Engineering/lycheeJS.git;
+<pre class="bash"><code>cd /opt/lycheejs;
 
 git checkout development;
 git checkout -b my-feature;
 
-echo "bla" &gt; datei.txt;
-git commit -m ":sparkles: Started work on my-feature";</code></pre>
+echo &quot;awesome&quot; &gt; feature.txt;
+git commit -m &quot;:sparkles: Started work on my-feature&quot;;</code></pre>
 		</section>
 		<section>
 			<h2>Fork</h2>
@@ -157,18 +152,21 @@ git commit -m ":sparkles: Started work on my-feature";</code></pre>
 				<li>Abzweigung des Projekts</li>
 				<li>Fork ist neue Software</li>
 				<li>Upstream ist alte Software</li>
-				<li>Bsp. LibreOffice ist Fork von OpenOffice</li>
+				<li>Beispiel: LibreOffice ist Fork von OpenOffice</li>
+				<li>Beispiel: LibreSSL ist Fork von OpenSSL</li>
+				<li>Beispiel: Blink ist Fork von WebKit ist Fork von KHTML</li>
 			</ul>
 		</section>
 	</section>
-
 	<section>
 		<section>
-			<h1>Triangular Workflow</h1>
+			<h1>Triangularer Workflow</h1>
 		</section>
 		<section>
 			<h2>Uebersicht</h2>
-			<img src="/asset/01-triangular-workflow.png">
+			<p>
+				<img src="/asset/01-triangular-workflow.png" alt="workflow">
+			</p>
 		</section>
 		<section>
 			<h2>1. Pull</h2>
@@ -182,7 +180,7 @@ git commit -m ":sparkles: Started work on my-feature";</code></pre>
 			<ul>
 				<li>Lokaler Merge von Commits</li>
 				<li>Lokale Feature Branches</li>
-				<li>Lokale Commits</li>
+				<li>Lokale Commits sind ahead</li>
 			</ul>
 		</section>
 		<section>
@@ -199,45 +197,44 @@ git commit -m ":sparkles: Started work on my-feature";</code></pre>
 				<li>Fork Maintainer initiiert Pull Request</li>
 				<li>Upstream Maintainer merged Pull Request</li>
 				<li>Keine Merge Conflicts</li>
-				<li>Alle sind gluecklick</li>
+				<li>Alle sind gluecklich</li>
 				<li>Suck it, SVN und CVS</li>
 			</ul>
 		</section>
-		<section>
-			<h2>Nochmal die Uebersicht</h2>
-			<img src="/asset/01-triangular-workflow.png">
-		</section>
 	</section>
-
 	<section>
 		<section>
 			<h1>Awesome GitHub</h1>
 		</section>
 		<section>
 			<h2>Einfache Forks</h2>
-			<img src="/asset/01-github-fork.png">
+			<p>
+				<img src="/asset/01-github-fork.png" alt="github-fork">
+			</p>
 		</section>
 		<section>
 			<h2>Einfache Pull Requests</h2>
-			<img src="/asset/01-github-pull-request.png">
+			<p>
+				<img src="/asset/01-github-pull-request.png" alt="github-pull-request">
+			</p>
 		</section>
 		<section>
 			<h2>Commits</h2>
 			<ul>
-				<li>"Fixes issue #1337"</li>
-				<li>"Solves #1337"</li>
-				<li>"Closes issue #1337"</li>
-				<li>"More work on #1337"</li>
+				<li><code>Fixes</code>  issue <code>#1337</code></li>
+				<li><code>Solves #1337</code></li>
+				<li><code>Closes</code>  issue <code>#1337</code></li>
+				<li><code>More</code>  work on issue <code>#1337</code></li>
 			</ul>
 		</section>
 		<section>
 			<h2>Issues</h2>
 			<ul>
 				<li>Probleme und Diskussionen</li>
-				<li>Verlinkung von Contributors (@user)</li>
-				<li>Verlinkung von Commits (@hash)</li>
-				<li>Verlinkung von Issues (#number)</li>
-				<li>Verlinkung von Code Reviews</li>
+				<li>Verlinkung von Contributors ( <code>@username</code>  )</li>
+				<li>Verlinkung von Commits ( <code>@hash</code>  )</li>
+				<li>Verlinkung von Issues ( <code>#issue</code>  )</li>
+				<li>Verlinking von Code Reviews</li>
 				<li>Votes und Reactions</li>
 			</ul>
 		</section>
@@ -253,40 +250,40 @@ git commit -m ":sparkles: Started work on my-feature";</code></pre>
 			<h2>Wikis</h2>
 			<ul>
 				<li>Markdown Syntax</li>
-				<li>Einbettung in allen Dateien (.md)</li>
-				<li>Einbettung Issues und Commits</li>
+				<li>Einbettung in allen Dateien ( <code>.md</code>  )</li>
+				<li>Einbettung in Issues und Commits</li>
 				<li>GitHub Code Editor</li>
 			</ul>
 		</section>
 	</section>
-
-   	<section>
+	<section>
 		<section>
 			<h1>Projekt Setup</h1>
 		</section>
 		<section>
 			<h2>Aufgabe</h2>
-			<ol>
-				<li>Installiere git</li>
-				<li>Forke die Boilerplate [1]</li>
+			<ul>
+				<li>Installiere git (git-bash)</li>
+				<li>Forke die Boilerplate <a href="">1</a></li>
 				<li>Clone deinen Fork lokal</li>
-				<li>Fuege den Inhalt der HTML5 Datei hinzu</li>
+				<li>Fuege Inhalt der HTML5 Datei hinzu</li>
 				<li>Erstelle einen Feature Branch</li>
-				<li>Habe Commits von allen Teammitgliedern</li>
+				<li>Habe Commits von ALLEN Teammitgliedern</li>
 				<li>Erstelle einen Pull Request</li>
-			</ol>
-			<br/>
-			<br/>
-			<small>[1] github.com/INT-WAW/Boilerplate.git</small>
+			</ul>
+			<p>
+				<a href="">1</a> github.com/INT-WAW/Boilerplate.git
+			</p>
 		</section>
 	</section>
+
 
 </div>
 </div>
 
 <script src="/source/head.min.js"></script>
 <script src="/source/reveal.js"></script>
+<script src="/source/preview.js"></script>
 
 </body>
 </html>
-
