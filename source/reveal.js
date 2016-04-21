@@ -4516,9 +4516,9 @@
         center:       true,
         transition:   'slide', // none/fade/slide/convex/concave/zoom
         dependencies: [
-            { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector('pre code'); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-            { src: 'plugin/search/search.js', async: true },
-            { src: 'plugin/zoom/zoom.js', async: true }
+            { src: '/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector('pre code'); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: '/plugin/search/search.js', async: true },
+            { src: '/plugin/zoom/zoom.js', async: true }
         ]
     });
 

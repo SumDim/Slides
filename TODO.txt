@@ -1,0 +1,49 @@
+
+= Done
+
+- Primitives (Boolean, String, Number, RegExp)
+- Arrays
+- Functions
+- Literals and Instances
+- Linking of Objects and Arrays
+- Function Scopes
+- XHR version 2
+
+
+= Not Done
+
+- Closures
+- Callbacks (async I/O idea)
+- Expressions and Statements
+- for in / for of
+- IIFE, Function Expressions
+
+= TODO
+
+DOM Level 3 API
+- querySelectorAll
+- querySelector
+- innerHTML
+- Document Fragments
+- Document Elements
+
+= TODO: Transpilers
+
+- Compiler-Chain
+- Babel, babel-cli, npm, node
+
+
+= TODO: ES6
+
+- Function Generators
+- ES6 Promises
+- Block Scope: let
+- Constants (const)
+- Block Scope vs. Function Scope
+- classes are not classes (Prototype Chain)
+
+= TODO: ES7
+
+- Fat Arrow Functions (Lambdas)
+- async / await Keyword
+

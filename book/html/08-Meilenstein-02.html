@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>AE Series - Meilenstein-02</title>
+
+    <meta name="author" content="Christoph Martens">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="/design/reveal.css">
+    <link rel="stylesheet" href="/design/code-zenburn.css">
+    <link rel="stylesheet" href="/design/theme-sky.css">
+
+</head>
+<body>
+
+<div class="reveal">
+<div class="slides">
+
+	<section>
+		<img src="/asset/00-logo.png" width="192" height="192">
+		<h2>Meilenstein-02</h2>
+		<p>
+			<a href="http://github.com/INT-WAW">github.com/INT-WAW</a>
+		</p>
+	</section>
+
+	<section>
+		<section>
+			<h1>Meilenstein 02: Interface</h1>
+		</section>
+		<section>
+			<h1>Uebersicht</h1>
+		</section>
+		<section>
+			<h2>Uebersicht</h2>
+			<ul>
+				<li>Beginn heute (20.04.2016)</li>
+				<li>Detailansicht Auftraege</li>
+				<li>Bearbeiten und Loeschen von Auftraegen</li>
+				<li>GET Integration (/api/Tasks)</li>
+				<li>POST Integration (/api/Tasks)</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Uebersicht</h2>
+			<ul>
+				<li>Testat ist gemeinsam Meilenstein 1 und 2</li>
+				<li>Antritt zum Testat <b>NUR</b>  mit Pull-Request auf die Boilerplate</li>
+				<li>Erfuellung Interface-Spezifikation (15 Punkte je Testat)</li>
+				<li>Erfuellung Code-Qualitaet (15 Punkte je Testat)</li>
+			</ul>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Interface</h1>
+		</section>
+		<section>
+			<h2>Interface</h2>
+			<ul>
+				<li>Notwendige Features:</li>
+				<li>Tasks "Formular"</li>
+				<li>Input Elemente fuer ID, Type, data (input/output)</li>
+				<li>type: <code>hash-md5</code> , <code>hash-sha256</code></li>
+				<li>type: <code>crack-md5</code></li>
+				<li>data: <code>(String) input</code>  und <code>(String) output</code></li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel</h2>
+<pre class="javascript"><code>var json = {
+	id: 0,
+	type: 'hash-md5',
+	data: {
+		input:  'woot',
+		output: null
+	}
+};</code></pre>
+		</section>
+		<section>
+			<h2>Status Tabelle</h2>
+			<ul>
+				<li>Start/Stop Button mit <code>/api/Status</code>  POST Integration</li>
+				<li>Anwendung des <code>token</code>  Headers</li>
+				<li>Senden der Daten mit <code>XHR</code>  Version <code>2</code></li>
+			</ul>
+		</section>
+		<section>
+			<h2>Tasks Tabelle</h2>
+			<ul>
+				<li>Laden der Daten mit <code>Fetch</code>  und <code>Promise API</code> , NICHT <b>XHR</b></li>
+				<li>Senden der Daten mit <code>XHR</code>  Version <code>2</code></li>
+			</ul>
+		</section>
+		<section>
+			<h2>Tasks Formular</h2>
+			<ul>
+				<li>Input Elemente fuer ID, Type und Data</li>
+				<li>Nutzung von JSON stringify</li>
+				<li>Anwendung des <code>token</code>  Headers</li>
+				<li>Senden der Daten mit <code>XHR</code>  Version <code>2</code></li>
+			</ul>
+		</section>
+	</section>
+
+
+</div>
+</div>
+
+<script src="/source/head.min.js"></script>
+<script src="/source/reveal.js"></script>
+<script src="/source/preview.js"></script>
+
+</body>
+</html>

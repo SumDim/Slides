@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>AE Series - JS</title>
+
+    <meta name="author" content="Christoph Martens">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="/design/reveal.css">
+    <link rel="stylesheet" href="/design/code-zenburn.css">
+    <link rel="stylesheet" href="/design/theme-sky.css">
+
+</head>
+<body>
+
+<div class="reveal">
+<div class="slides">
+
+	<section>
+		<img src="/asset/00-logo.png" width="192" height="192">
+		<h2>JS</h2>
+		<p>
+			<a href="http://github.com/INT-WAW">github.com/INT-WAW</a>
+		</p>
+	</section>
+
+	<section>
+		<section>
+			<h1>JavaScript</h1>
+		</section>
+		<section>
+			<h2>JavaScript</h2>
+			<ul>
+				<li>JavaScript ist NICHT Java</li>
+				<li>Bad Name, Shit happens</li>
+				<li>Ehemals LiveScript, JScript</li>
+				<li>Sprache des Web</li>
+			</ul>
+		</section>
+		<section>
+			<h2>ES5 / ES6</h2>
+			<ul>
+				<li>Standardisierung durch ECMA Commitee</li>
+				<li>Aktueller Standard: ES2015 (ES6)</li>
+				<li>Schon heute ES2016 (ES7) nutzbar</li>
+				<li>Funktionelle und Prototypische Sprache</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Garbage Collection</h2>
+			<ul>
+				<li>Literale sind Runtime Memory</li>
+				<li>Instanzen sind Heap Memory</li>
+				<li>Garbage Collector loescht Heap Memory</li>
+				<li>Vermeidung von Garbage ist geboten!</li>
+			</ul>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Datentypen</h1>
+		</section>
+		<section>
+			<h2>Primitive</h2>
+			<p>
+				Primitive Datentypen sind <code>Boolean</code> , <code>Number</code> , <code>String</code> , <code>RegExp</code> . Primitive Datentypen verhalten sich anders als Objektinstanzen
+			</p>
+		</section>
+		<section>
+			<h2>Primitive: undefined</h2>
+			<ul>
+				<li><code>undefined</code>  ist Default-Wert fuer Variablen</li>
+				<li><code>typeof undefined</code>  ist <code>undefined</code></li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel</h2>
+<pre class="javascript"><code>var foo;
+var bar = undefined;
+
+console.log(foo === bar); // true
+console.log(foo == bar);  // true
+
+console.log(typeof foo);  // &quot;undefined&quot;
+console.log(typeof bar);  // &quot;undefined&quot;</code></pre>
+		</section>
+		<section>
+			<h2>Primitive: Null</h2>
+			<ul>
+				<li><code>null</code>  ist ein leerer Wert</li>
+				<li><code>typeof null</code>  ist <code>object</code> (ES5.1 Spezifikations-Bug)</li>
+				<li><code>typeof null</code>  ist <code>null</code>  (ES6 / ES7)</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel</h2>
+<pre class="javascript"><code>var foo = null;
+
+console.log(foo === null); // true
+console.log(typeof foo);   // &quot;null&quot; in ES6 and ES7</code></pre>
+		</section>
+		<section>
+			<h2>Primitive: Boolean</h2>
+			<ul>
+				<li>Literal ist <code>true</code>  oder <code>false</code></li>
+				<li>Constructor ist <code>new Boolean(value)</code></li>
+				<li><code>typeof 123</code>  ist <code>boolean</code></li>
+				<li>Primitiver Datentyp</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel</h2>
+<pre class="javascript"><code>var foo = true;
+var bar = new Boolean(true);
+
+console.log(foo instanceof Object); // false
+console.log(bar instanceof Object); // true
+
+console.log(foo === true); // true
+console.log(bar === true); // false
+
+console.log(foo == true); // true
+console.log(bar == true); // true
+
+console.log(bar === bar);  // true, Object-Uniqueness</code></pre>
+		</section>
+		<section>
+			<h2>Primitive: Number</h2>
+			<ul>
+				<li>Literale sind <code>0123</code> , <code>0x123</code> , <code>123</code> , <code>1.23</code> , <code>0B0011</code></li>
+				<li>Constructor ist <code>new Number(value)</code></li>
+				<li><code>typeof 123</code>  ist <code>number</code></li>
+				<li>Primitiver Datentyp</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel</h2>
+<pre class="javascript"><code>var foo = 123;
+var bar = new Number(123);
+var qux = 0x7B;       // hex
+var doo = 0B01111011; // binary
+
+console.log(foo instanceof Object); // false
+console.log(bar instanceof Object); // true
+
+console.log(foo == bar);  // true
+console.log(foo === bar); // false
+console.log(foo === qux); // true</code></pre>
+		</section>
+		<section>
+			<h2>Primitive: String</h2>
+			<ul>
+				<li>Literal ist <code>&quot;foo&quot;</code>  oder <code>'foo'</code></li>
+				<li>Constructor ist <code>new String(value)</code></li>
+				<li><code>typeof &quot;foo&quot;</code>  ist <code>string</code></li>
+				<li>Primitiver Datentyp</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel</h2>
+<pre class="javascript"><code>var foo = &quot;foo&quot;;
+var bar = new String(&quot;foo&quot;);
+
+console.log(foo instanceof Object); // false
+console.log(bar instanceof Object); // true
+
+console.log(foo == bar);  // true
+console.log(foo === bar); // false</code></pre>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Objekte und Arrays</h1>
+		</section>
+		<section>
+			<h2>Objekte</h2>
+			<p>
+				ALLE Objekte sind Unique und eindeutig identifizierbar, EGAL auf welche Art das Objekt instanziiert wurde.
+			</p>
+		</section>
+		<section>
+			<h2>Objekte</h2>
+			<ul>
+				<li>Literal ist <code>{}</code></li>
+				<li>Constructor ist <code>new Object()</code></li>
+				<li>Custom Constructor ist <code>Object.create(prototype</code> , <code>properties)</code></li>
+				<li>Objektbasierte Vererbung</li>
+				<li>NICHT Objektorientierte Vererbung</li>
+				<li>Prototype-Chain entscheidet Verhalten von <code>instanceof</code></li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel</h2>
+<pre class="javascript"><code>var foo = {};
+var bar = new Object();
+
+console.log(foo instanceof Object); // true
+console.log(bar instanceof Object); // true
+
+console.log(foo === {}); // false
+console.log(bar === {}); // false
+
+console.log(foo == {}); // false
+console.log(bar == {}); // false</code></pre>
+		</section>
+		<section>
+			<h2>Arrays</h2>
+			<p>
+				ALLE Arrays leiten von Object ab und sind eindeutig identifizierbar, EGAL auf welche Art das Array instanziiert wurde.
+			</p>
+		</section>
+		<section>
+			<h2>Arrays</h2>
+			<ul>
+				<li>Literal ist <code>[]</code></li>
+				<li>Constructor ist <code>new Array(length)</code></li>
+				<li><code>typeof []</code>  ist <code>object</code></li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel</h2>
+<pre class="javascript"><code>var foo = [];
+var bar = new Array(1337);
+
+console.log(foo[0]); // undefined
+console.log(bar[0]); // undefined
+
+console.log(foo.length); // 0
+console.log(bar.length); // 1337</code></pre>
+		</section>
+		<section>
+			<h2>Arrays</h2>
+			<ul>
+				<li>Array leitet von Object ab</li>
+				<li>Jedes Array ist deshalb auch unique</li>
+				<li>Prototype-Chain ist <code>Array</code>  &gt; <code>Object</code>  &gt; <code>null</code></li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel</h2>
+<pre class="javascript"><code>var foo = [];
+
+var p1 = Object.getPrototypeOf(foo);
+var p2 = Object.getPrototypeOf(p1);
+var p3 = Object.getPrototypeOf(p2);
+
+console.log(p1 === Array.prototype);  // true
+console.log(p2 === Object.prototype); // true
+console.log(p3 === null);             // true</code></pre>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Funktionen</h1>
+		</section>
+		<section>
+			<h2>Funktionen</h2>
+			<ul>
+				<li>Definition via <code>function(parameter)</code></li>
+				<li>First-Class Functions</li>
+				<li><code>typeof (function(){})</code>  ist <code>function</code></li>
+				<li><code>new</code>  keyword fuehrt zu <code>Object</code>  Instanz</li>
+				<li>Prototype-Chain ist <code>Function</code>  &gt; <code>Object</code>  &gt; <code>null</code></li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel</h2>
+<pre class="javascript"><code>var foo = function() { return 3 * 3; }; // GOOD
+var bar = new Function('return 3 * 3'); // BAD
+
+console.log(typeof foo); // 'function'
+console.log(typeof bar); // 'function'
+
+console.log(Object.prototype.toString.call(foo)); // '[object Function]'
+console.log(Object.prototype.toString.call(bar)); // '[object Function]'
+
+console.log(foo()); // 9
+console.log(bar()); // 9</code></pre>
+		</section>
+		<section>
+			<h2>Funktionsscopes</h2>
+			<ul>
+				<li>Neuer Scope ist erstellt mit call Syntax <code>foo()</code></li>
+				<li><code>new</code>  keyword erstellt neue Objektinstanz</li>
+				<li><code>this</code>  keyword referenziert auf aktuellen Scope</li>
+				<li><code>Function.prototype.call</code>  fuer statische Scope Manipulation</li>
+				<li><code>Function.prototype.apply</code>  fuer dynamische Scope Manipulation</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel</h2>
+<pre class="javascript"><code>var foo = function(a, b) {
+	console.log(this.qux, a, b);
+};
+var bar = { qux: 'doo' }
+
+foo.call(bar, 1, 2);                 // 'doo', 1, 2
+foo.apply({ qux: 'woo' }, [ 1, 2 ]); // 'woo', 1, 2
+
+foo(1, 2);     // undefined, 1, 2
+new foo(1, 2); // undefined, 1, 2</code></pre>
+		</section>
+		<section>
+			<h2>Closures</h2>
+			<ul>
+				<li>Variablen ( <code>var</code>  ) sind Function Scoped</li>
+				<li>Jede Variable die nicht gebunden ist, ist frei zum Outer Scope</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel</h2>
+<pre class="javascript"><code>var foo = { bar: 1 };
+
+var bar = function() {
+	foo.bar++;
+};
+
+bar();
+bar();
+
+console.log(foo); // bar: 3</code></pre>
+		</section>
+		<section>
+			<h2>Closures</h2>
+			<ul>
+				<li>Bindung von Variablen durch Parameter</li>
+				<li>Bindung von Variablen durch benamte Expressions</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel</h2>
+<pre class="javascript"><code>var foo = { bar: 1 };
+var bar = function(foo) {
+	foo.bar++;
+};
+
+var qux = { bar: 1 };
+
+bar(qux);
+bar(qux);
+
+console.log(foo); // bar: 1
+console.log(qux); // bar: 3</code></pre>
+		</section>
+		<section>
+			<h2>IIFE</h2>
+			<ul>
+				<li>Immediately Invoked Function Expressions</li>
+				<li>Sofort ausgefuehrte Funktionsausdruecke</li>
+				<li>Typischerweise Bindung von Variablen</li>
+				<li>Return Wert wird synchron ausgefuehrt</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel</h2>
+<pre class="javascript"><code>var foo = (function(a, b) {
+	return a * b;
+})(13, 37);
+
+console.log(foo); // 481</code></pre>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>JSON</h1>
+		</section>
+		<section>
+			<h2>JSON</h2>
+			<ul>
+				<li>JavaScript Object Notation</li>
+				<li>Interchange Datenformat fuer alle Programmiersprachen</li>
+				<li>Alternative zu XML</li>
+				<li>XML ist scheisse</li>
+				<li>JSON ist awesome</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Beispiel</h2>
+<pre class="javascript"><code>var foo = {
+	bar: true,
+	qux: 123.23,
+	doo: [ false, 'foo', 123 ]
+};
+
+var bar = JSON.stringify(foo);
+var qux = JSON.parse(bar);</code></pre>
+		</section>
+	</section>
+
+
+</div>
+</div>
+
+<script src="/source/head.min.js"></script>
+<script src="/source/reveal.js"></script>
+<script src="/source/preview.js"></script>
+
+</body>
+</html>
